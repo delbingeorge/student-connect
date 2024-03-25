@@ -24,6 +24,9 @@
                 </div>
             </div>
         </div>
+        @php
+            $i = 0;
+        @endphp
         @foreach ($feedbacks as $feedback)
             <div class="bg-white shadow-md rounded-lg p-6 mb-8">
                 <h2 class="font-semibold text-lg mb-4">PERFORMANCE ENQUIRY {{ $feedback->form_number }}</h2>
@@ -62,11 +65,11 @@
                             @foreach ($subjects as $subject)
                                 <div class="table-row">
                                 <div class="table-cell font-medium border border-gray-300 p-2">{{ $subject->subject_name }}</div>
-                                    @isset($attendance['22MCA101'])
+                                    @isset($attendance[$i])
                                         <div class="table-cell border border-gray-300 p-2">
-                                            {{ $attendance[$subject->subject_code]->attendance_percentage }}%
+                                            {{ $attendance[$i][$subject->subject_code] }}%
                                         </div>
-                                        @else
+                                    @else
                                         <div class="table-cell border border-gray-300 p-2">
                                         No attendance recorded for this subject.
                                         </div>
@@ -107,6 +110,9 @@
                     </div>
                 </div>
             </div>
+            @php
+            $i++
+            @endphp
         @endforeach
     </div>
 </body>

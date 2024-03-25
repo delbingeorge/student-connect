@@ -20,13 +20,7 @@ class PdfController extends Controller
         $student_details = Student::where('student_id', $usn)
             ->first();
 
-        // $mentorId = DB::table('mentorship')
-        //     ->where('mentee_id', $usn)
-        //     ->value('mentor_id');
-        // $fullname = DB::table('teachers')
-        //     ->select('fullname')
-        //     ->where('mentor_id', $mentorId)
-        //     ->get();
+        
 
         if ($student_details->semester == 1) {
             $feedbacks = FeedbackForm::where('student_id', $usn)
@@ -34,6 +28,7 @@ class PdfController extends Controller
                 ->get();
             $subjects = Subject::where('semester_number', 1)->get();
             $attendance = Sem_1_attendance::where('student_id', $usn)->get();
+            // dd($attendance);
             $mse = Sem_1_mse::where('student_id', $usn)->get();
         }
         // if($student_semester==2){
@@ -46,7 +41,6 @@ class PdfController extends Controller
 
         // }
 
-        // $pdf = Pdf::loadView('generate-pdf',compact('records'));
         // return $pdf->download('StudentDetails.pdf');
         $data = [
             'student_details' => $student_details,
@@ -55,6 +49,8 @@ class PdfController extends Controller
             'attendance' => $attendance,
             'mse' => $mse,
         ];
-        return view('generate-pdf', $data);
+        $pdf = Pdf::loadView('generate-pdf',$data);
+        return $pdf->download($student_details->fullname.".pdf");
+        // return view('generate-pdf', $data);
     }
 }
