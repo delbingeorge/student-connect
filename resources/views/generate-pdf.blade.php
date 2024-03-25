@@ -9,7 +9,7 @@
 
 <body class="font-poppy bg-gray-100 px-4 py-8">
     <div class="max-w-4xl mx-auto">
-        <h1 class="font-semibold text-xl mb-4 text-gray-800">STUDENT INFO</h1>
+    <h1 class="font-semibold text-xl mb-4 text-gray-800">STUDENT INFO</h1>
         <div>
             <div class="table w-full border-collapse border border-gray-300">
                 <div class="table-row bg-gray-200">
@@ -24,7 +24,6 @@
                 </div>
             </div>
         </div>
-
         @foreach ($feedbacks as $feedback)
             <div class="bg-white shadow-md rounded-lg p-6 mb-8">
                 <h2 class="font-semibold text-lg mb-4">PERFORMANCE ENQUIRY {{ $feedback->form_number }}</h2>
@@ -42,6 +41,69 @@
                     <div class="table-row bg-gray-200">
                         <div class="table-cell font-medium border border-gray-300 p-2">State of the issue</div>
                         <div class="table-cell border border-gray-300 p-2">{{ $feedback->field3 }}</div>
+                    </div>
+                    <div class="table-row bg-gray-200">
+                        <div class="table-cell font-medium border border-gray-300 p-2">Are you having any difficulty in
+                            understanding the concepts? If so give
+                            details.</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field4 }}</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell font-medium border border-gray-300 p-2">Action taken</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field5 }}</div>
+                    </div>
+                    <div class="table-row bg-gray-200">
+                        <div class="table-cell font-medium border border-gray-300 p-2">State of the issue</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field6 }}</div>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Give the attendance percentage</h3>
+                    <!-- <div class="flex flex-col space-y-4 mb-4"> -->
+                        @isset($subjects)
+                            @foreach ($subjects as $subject)
+                                <div class="table-row">
+                                <div class="table-cell font-medium border border-gray-300 p-2">{{ $subject->subject_name }}</div>
+                                    @isset($attendance['22MCA101'])
+                                        <div class="table-cell border border-gray-300 p-2">
+                                            {{ $attendance[$subject->subject_code]->attendance_percentage }}%
+                                        </div>
+                                        @else
+                                        <div class="table-cell border border-gray-300 p-2">
+                                        No attendance recorded for this subject.
+                                        </div>
+                                    @endisset
+                                </div>
+                            @endforeach
+                        @else
+                            <p>No subjects available.</p>
+                        @endisset
+                    <!-- </div> -->
+                    <div class="table-row bg-gray-200">
+                        <div class="table-cell font-medium border border-gray-300 p-2">Any issues in attendance.</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field7 }}</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell font-medium border border-gray-300 p-2">Action taken</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field8 }}</div>
+                    </div>
+                    <div class="table-row bg-gray-200">
+                        <div class="table-cell font-medium border border-gray-300 p-2">State of the issue</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field9 }}</div>
+                    </div>
+                    <div class="table-row bg-gray-200">
+                        <div class="table-cell font-medium border border-gray-300 p-2">Any other issues</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field10 }}</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell font-medium border border-gray-300 p-2">Action taken</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field11 }}</div>
+                    </div>
+                    <div class="table-row bg-gray-200">
+                        <div class="table-cell font-medium border border-gray-300 p-2">State of the issue</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field12 }}</div>
+                    </div>
+                    <div class="table-row bg-gray-200">
+                        <div class="table-cell font-medium border border-gray-300 p-2">Projects Involved</div>
+                        <div class="table-cell border border-gray-300 p-2">{{ $feedback->field13 }}</div>
                     </div>
                 </div>
             </div>
