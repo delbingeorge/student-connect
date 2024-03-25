@@ -95,8 +95,7 @@
                     </div>  
                     <div>
                         <p class="font-medium">Action taken</p>
-                        <p>{{ $feedback->field11 }}</p>
-                    </div>
+                        <p>{{ $feedback->field11 }}</p>  </div>
                     <div>
                         <p class="font-medium">State of the issue</p>
                         <p>{{ $feedback->field12 }}</p>
