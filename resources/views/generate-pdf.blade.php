@@ -114,6 +114,41 @@
             $i++
             @endphp
         @endforeach
+
+        @php
+            $i = 0;
+        @endphp
+        @foreach ($mse as $mse)
+            <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+                <div class="table w-full border-collapse border border-gray-300 mb-4">
+                    <h3 class="font-semibold text-lg mb-2">MSE {{ $mse->mse_number }}</h3>
+                    <!-- <div class="flex flex-col space-y-4 mb-4"> -->
+                        @isset($subjects)
+                            @foreach ($subjects as $subject)
+                                <div class="table-row">
+                                <div class="table-cell font-medium border border-gray-300 p-2">{{ $subject->subject_name }}</div>
+                                    @isset($mse[$subject->subject_code])
+                                        <div class="table-cell border border-gray-300 p-2">
+                                            {{ $mse[$subject->subject_code] }}%
+                                        </div>
+                                    @else
+                                        <div class="table-cell border border-gray-300 p-2">
+                                        No Marks recorded for this subject.
+                                        </div>
+                                    @endisset
+                                </div>
+                            @endforeach
+                        @else
+                            <p>No subjects available.</p>
+                        @endisset
+                    <!-- </div> -->
+                </div>
+            </div>
+            @php
+            $i++
+            @endphp
+        @endforeach
+
     </div>
 </body>
 

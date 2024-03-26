@@ -20,7 +20,7 @@ class PdfController extends Controller
         $student_details = Student::where('student_id', $usn)
             ->first();
 
-        
+
 
         if ($student_details->semester == 1) {
             $feedbacks = FeedbackForm::where('student_id', $usn)
@@ -30,9 +30,28 @@ class PdfController extends Controller
             $attendance = Sem_1_attendance::where('student_id', $usn)->get();
             // dd($attendance);
             $mse = Sem_1_mse::where('student_id', $usn)->get();
+            $data = [
+                'student_details' => $student_details,
+                'feedbacks' => $feedbacks,
+                'subjects' => $subjects,
+                'attendance' => $attendance,
+                'mse' => $mse,
+            ];
         }
-        // if($student_semester==2){
-
+        // if ($student_details->semester == 2) {
+        //     $feedbacks = FeedbackForm::where('student_id', $usn)
+        //         ->whereIn('semester', [1, 2])
+        //         ->get();
+        //     $subjects = Subject::where('semester_number', [1, 2])->get();
+        //     $attendance = DB::select("SELECT * FROM sem_1_attendance,sem_2_attendance WHERE sem_1_attendance.student_id = ? AND sem_2_attendance.student_id = ?", [$usn,$usn]);
+        //     $mse = DB::select("SELECT * FROM sem_1_mse,sem_2_mse WHERE sem_1_mse.student_id = ? AND sem_2_mse.student_id = ?", [$usn, $usn]);
+        //     $data = [
+        //         'student_details' => $student_details,
+        //         'feedbacks' => $feedbacks,
+        //         'subjects' => $subjects,
+        //         'attendance' => $attendance,
+        //         'mse' => $mse,
+        //     ];
         // }
         // if($student_semester==3){
 
@@ -41,16 +60,8 @@ class PdfController extends Controller
 
         // }
 
-        // return $pdf->download('StudentDetails.pdf');
-        $data = [
-            'student_details' => $student_details,
-            'feedbacks' => $feedbacks,
-            'subjects' => $subjects,
-            'attendance' => $attendance,
-            'mse' => $mse,
-        ];
-        $pdf = Pdf::loadView('generate-pdf',$data);
-        return $pdf->download($student_details->fullname.".pdf");
-        // return view('generate-pdf', $data);
+        // $pdf = Pdf::loadView('generate-pdf',$data);
+        // return $pdf->download($student_details->fullname.".pdf");
+        return view('generate-pdf', $data);
     }
 }
