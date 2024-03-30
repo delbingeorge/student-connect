@@ -69,6 +69,7 @@
                     </div>
                     <h3 class="font-semibold text-lg mb-2">Give the attendance percentage</h3>
                     <!-- <div class="flex flex-col space-y-4 mb-4"> -->
+                        
                         @if($feedback->semester == 1)
                             @isset($sem1_subjects)
                                 @foreach ($sem1_subjects as $subject)
@@ -92,6 +93,7 @@
                                 $i++
                             @endphp
                         @endif
+
                         @if($feedback->semester == 2)
                             @isset($sem2_subjects)
                                 @foreach ($sem2_subjects as $subject)
@@ -115,6 +117,7 @@
                                 $j++
                             @endphp
                         @endif
+
                         @if($feedback->semester == 3)
                             @isset($sem3_subjects)
                                 @foreach ($sem3_subjects as $subject)
@@ -138,6 +141,7 @@
                                 $k++
                             @endphp
                         @endif
+
                         @if($feedback->semester == 4)
                             @isset($sem4_subjects)
                                 @foreach ($sem4_subjects as $subject)
@@ -161,6 +165,7 @@
                                 $l++
                             @endphp
                         @endif
+
                     <!-- </div> -->
                     <div class="table-row bg-gray-200">
                         <div class="table-cell font-medium border border-gray-300 p-2">Any issues in attendance.</div>
