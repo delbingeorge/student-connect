@@ -24,8 +24,10 @@
                 </div>
             </div>
         </div>
+        <!-- <h2 class="font-semibold text-2xl mb-4">Semester {{ $student_details->semester }}</h2> -->
         @php
             $i = 0;
+            $j = 0;
         @endphp
         @foreach ($feedbacks as $feedback)
             <div class="bg-white shadow-md rounded-lg p-6 mb-8">
@@ -61,24 +63,52 @@
                     </div>
                     <h3 class="font-semibold text-lg mb-2">Give the attendance percentage</h3>
                     <!-- <div class="flex flex-col space-y-4 mb-4"> -->
-                        @isset($subjects)
-                            @foreach ($subjects as $subject)
-                                <div class="table-row">
-                                <div class="table-cell font-medium border border-gray-300 p-2">{{ $subject->subject_name }}</div>
-                                    @isset($attendance[$i])
-                                        <div class="table-cell border border-gray-300 p-2">
-                                            {{ $attendance[$i][$subject->subject_code] }}%
-                                        </div>
-                                    @else
-                                        <div class="table-cell border border-gray-300 p-2">
-                                        No attendance recorded for this subject.
-                                        </div>
-                                    @endisset
-                                </div>
-                            @endforeach
-                        @else
-                            <p>No subjects available.</p>
-                        @endisset
+                        @if($feedback->semester == 1)
+                            @isset($sem1_subjects)
+                                @foreach ($sem1_subjects as $subject)
+                                    <div class="table-row">
+                                    <div class="table-cell font-medium border border-gray-300 p-2">{{ $subject->subject_name }}</div>
+                                        @isset($sem1_attendance[$i])
+                                            <div class="table-cell border border-gray-300 p-2">
+                                            {{ $sem1_attendance[$i]->{$subject->subject_code} }}%
+                                            </div>
+                                        @else
+                                            <div class="table-cell border border-gray-300 p-2">
+                                            No attendance recorded for this subject.
+                                            </div>
+                                        @endisset
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>No subjects available.</p>
+                            @endisset
+                            @php
+                                $i++
+                            @endphp
+                        @endif
+                        @if($feedback->semester == 2)
+                            @isset($sem2_subjects)
+                                @foreach ($sem2_subjects as $subject)
+                                    <div class="table-row">
+                                    <div class="table-cell font-medium border border-gray-300 p-2">{{ $subject->subject_name }}</div>
+                                        @isset($sem2_attendance[$j])
+                                            <div class="table-cell border border-gray-300 p-2">
+                                            {{ $sem2_attendance[$j]->{$subject->subject_code} }}%
+                                            </div>
+                                        @else
+                                            <div class="table-cell border border-gray-300 p-2">
+                                            No attendance recorded for this subject.
+                                            </div>
+                                        @endisset
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>No subjects available.</p>
+                            @endisset
+                            @php
+                                $i++
+                            @endphp
+                        @endif
                     <!-- </div> -->
                     <div class="table-row bg-gray-200">
                         <div class="table-cell font-medium border border-gray-300 p-2">Any issues in attendance.</div>
@@ -110,43 +140,8 @@
                     </div>
                 </div>
             </div>
-            @php
-            $i++
-            @endphp
         @endforeach
-        @php
-            $i = 0;
-        @endphp
-        @foreach ($mse as $mse)
-            <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-                <div class="table w-full border-collapse border border-gray-300 mb-4">
-                    <h3 class="font-semibold text-lg mb-2">MSE {{ $mse->mse_number }}</h3>
-                    <!-- <div class="flex flex-col space-y-4 mb-4"> -->
-                        @isset($subjects)
-                            @foreach ($subjects as $subject)
-                                <div class="table-row">
-                                <div class="table-cell font-medium border border-gray-300 p-2">{{ $subject->subject_name }}</div>
-                                    @isset($mse[$subject->subject_code])
-                                        <div class="table-cell border border-gray-300 p-2">
-                                            {{ $mse[$subject->subject_code] }}%
-                                        </div>
-                                    @else
-                                        <div class="table-cell border border-gray-300 p-2">
-                                        No Marks recorded for this subject.
-                                        </div>
-                                    @endisset
-                                </div>
-                            @endforeach
-                        @else
-                            <p>No subjects available.</p>
-                        @endisset
-                    <!-- </div> -->
-                </div>
-            </div>
-            @php
-            $i++
-            @endphp
-        @endforeach
+        
 
     </div>
 </body>

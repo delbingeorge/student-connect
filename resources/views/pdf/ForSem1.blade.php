@@ -24,6 +24,7 @@
                 </div>
             </div>
         </div>
+        <h2 class="font-semibold text-2xl mb-4">Semester {{ $student_details->semester }}</h2>
         @php
             $i = 0;
         @endphp
