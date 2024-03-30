@@ -114,7 +114,6 @@
             $i++
             @endphp
         @endforeach
-
         @php
             $i = 0;
         @endphp

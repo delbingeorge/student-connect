@@ -37,31 +37,40 @@ class PdfController extends Controller
                 'attendance' => $attendance,
                 'mse' => $mse,
             ];
+
+            // $pdf = Pdf::loadView('pdf/ForSem1',$data);
+            // return $pdf->download($student_details->fullname.".pdf");
+            // dd($data);
+            return view('pdf/ForSem1', $data);
         }
-        // if ($student_details->semester == 2) {
-        //     $feedbacks = FeedbackForm::where('student_id', $usn)
-        //         ->whereIn('semester', [1, 2])
-        //         ->get();
-        //     $subjects = Subject::where('semester_number', [1, 2])->get();
-        //     $attendance = DB::select("SELECT * FROM sem_1_attendance,sem_2_attendance WHERE sem_1_attendance.student_id = ? AND sem_2_attendance.student_id = ?", [$usn,$usn]);
-        //     $mse = DB::select("SELECT * FROM sem_1_mse,sem_2_mse WHERE sem_1_mse.student_id = ? AND sem_2_mse.student_id = ?", [$usn, $usn]);
-        //     $data = [
-        //         'student_details' => $student_details,
-        //         'feedbacks' => $feedbacks,
-        //         'subjects' => $subjects,
-        //         'attendance' => $attendance,
-        //         'mse' => $mse,
-        //     ];
-        // }
+
+        if ($student_details->semester == 2) {
+            $feedbacks = FeedbackForm::where('student_id', $usn)
+                ->whereIn('semester', [1, 2])
+                ->get();
+            $subjects = DB::select("SELECT * FROM subjects WHERE semester_number = ? OR semester_number = ?", [1, 2]);
+            $attendance = DB::select("SELECT * FROM sem_1_attendance LEFT JOIN sem_2_attendance ON sem_1_attendance.student_id = sem_2_attendance.student_id = ?", [$usn]);
+            $mse = DB::select("SELECT * FROM sem_1_mse LEFT JOIN sem_2_mse ON sem_1_mse.student_id = sem_2_mse.student_id WHERE sem_1_mse.student_id = ?", [$usn]);
+
+            $data = [
+                'student_details' => $student_details,
+                'feedbacks' => $feedbacks,
+                'subjects' => $subjects,
+                'attendance' => $attendance,
+                'mse' => $mse,
+            ];
+
+            // $pdf = Pdf::loadView('pdf/ForSem1',$data);
+            // return $pdf->download($student_details->fullname.".pdf");
+            dd($data);
+            return view('pdf/ForSem2', $data);
+        }
+
         // if($student_semester==3){
 
         // }
         // if($student_semester==4){
 
         // }
-
-        // $pdf = Pdf::loadView('generate-pdf',$data);
-        // return $pdf->download($student_details->fullname.".pdf");
-        return view('generate-pdf', $data);
     }
 }
