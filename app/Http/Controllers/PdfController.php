@@ -23,25 +23,38 @@ class PdfController extends Controller
 
 
         if ($student_details->semester == 1) {
-            $feedbacks = FeedbackForm::where('student_id', $usn)
-                ->where('semester', 1)
-                ->get();
-            $attendance = Sem_1_attendance::where('student_id', $usn)->get();
-            $subjects = Subject::where('semester_number', 1)->get();
-            // dd($attendance);
-            $mse = Sem_1_mse::where('student_id', $usn)->get();
+            // $feedbacks = FeedbackForm::where('student_id', $usn)
+            //     ->where('semester', 1)
+            //     ->get();
+            // $attendance = Sem_1_attendance::where('student_id', $usn)->get();
+            // $subjects = Subject::where('semester_number', 1)->get();
+            // // dd($attendance);
+            // $mse = Sem_1_mse::where('student_id', $usn)->get();
+            // $data = [
+            //     'student_details' => $student_details,
+            //     'feedbacks' => $feedbacks,
+            //     'attendance' => $attendance,
+            //     'subjects' => $subjects,
+            //     'mse' => $mse,
+            // ];
+
+            $feedbacks = DB::select("SELECT * FROM feedback_forms WHERE student_id = ? AND semester = ?", [$usn, 1]);
+            $sem1_attendance = DB::select("SELECT * FROM sem_1_attendance WHERE student_id = ?", [$usn]);
+            $sem1_subjects = DB::select("SELECT * FROM subjects WHERE semester_number = ?", [1]);
+            $sem1_mse = DB::select("SELECT * FROM sem_1_mse WHERE student_id = ?", [$usn]);
+
             $data = [
                 'student_details' => $student_details,
                 'feedbacks' => $feedbacks,
-                'attendance' => $attendance,
-                'subjects' => $subjects,
-                'mse' => $mse,
+                'sem1_attendance' => $sem1_attendance,
+                'sem1_subjects' => $sem1_subjects,
+                'sem1_mse' => $sem1_mse,
             ];
 
-            // $pdf = Pdf::loadView('pdf/ForSem1',$data);
+            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
             // return $pdf->download($student_details->fullname.".pdf");
             // dd($data);
-            return view('pdf/ForSem1', $data);
+            return view('pdf/generate-pdf', $data);
         }
 
         if ($student_details->semester == 2) {
@@ -64,10 +77,10 @@ class PdfController extends Controller
                 'sem2_mse' => $sem2_mse,
             ];
 
-            // $pdf = Pdf::loadView('pdf/ForSem2',$data);
+            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
             // return $pdf->download($student_details->fullname.".pdf");
             // dd($data);
-            return view('pdf/ForSem2', $data);
+            return view('pdf/generate-pdf', $data);
         }
 
         if ($student_details->semester == 3) {
@@ -96,10 +109,10 @@ class PdfController extends Controller
                 'sem3_mse' => $sem3_mse,
             ];
 
-            // $pdf = Pdf::loadView('pdf/ForSem3',$data);
+            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
             // return $pdf->download($student_details->fullname.".pdf");
             // dd($data);
-            return view('pdf/ForSem3', $data);
+            return view('pdf/generate-pdf', $data);
         }
 
         if ($student_details->semester == 4) {
@@ -134,10 +147,10 @@ class PdfController extends Controller
                 'sem4_mse' => $sem4_mse,
             ];
 
-            // $pdf = Pdf::loadView('pdf/ForSem4',$data);
+            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
             // return $pdf->download($student_details->fullname.".pdf");
             // dd($data);
-            return view('pdf/ForSem4', $data);
+            return view('pdf/generate-pdf', $data);
         }
     }
 }
