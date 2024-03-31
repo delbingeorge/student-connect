@@ -27,7 +27,7 @@
                 </div>
             </button>
         </nav>
-        <div id="profileModal" class="flex items-center justify-between px-12 pt-4 pb-2 bg-black/5">
+        <div id="profileModal" class="hidden items-center justify-between px-12 pt-4 pb-2 bg-black/5">
             <div class="modal-content text-left">
                 <div class=" -space-y-2 lg:space-y-0">
                     <h1 class="text-2xl lg:text-3xl font-semibold">{{ session('faculty_name') }}</h1>
@@ -167,10 +167,12 @@
         // When the user clicks the button, open the modal
         btn.onclick = function() {
             modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
-
+        
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
+            modal.classList.remove('flex');
             modal.classList.add('hidden');
         }
 
