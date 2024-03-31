@@ -50,11 +50,6 @@ class PdfController extends Controller
                 'sem1_subjects' => $sem1_subjects,
                 'sem1_mse' => $sem1_mse,
             ];
-
-            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
-            // return $pdf->download($student_details->fullname.".pdf");
-            // dd($data);
-            return view('pdf/generate-pdf', $data);
         }
 
         if ($student_details->semester == 2) {
@@ -76,11 +71,6 @@ class PdfController extends Controller
                 'sem1_mse' => $sem1_mse,
                 'sem2_mse' => $sem2_mse,
             ];
-
-            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
-            // return $pdf->download($student_details->fullname.".pdf");
-            // dd($data);
-            return view('pdf/generate-pdf', $data);
         }
 
         if ($student_details->semester == 3) {
@@ -108,11 +98,6 @@ class PdfController extends Controller
                 'sem2_mse' => $sem2_mse,
                 'sem3_mse' => $sem3_mse,
             ];
-
-            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
-            // return $pdf->download($student_details->fullname.".pdf");
-            // dd($data);
-            return view('pdf/generate-pdf', $data);
         }
 
         if ($student_details->semester == 4) {
@@ -146,11 +131,11 @@ class PdfController extends Controller
                 'sem3_mse' => $sem3_mse,
                 'sem4_mse' => $sem4_mse,
             ];
-
-            // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
-            // return $pdf->download($student_details->fullname.".pdf");
-            // dd($data);
-            return view('pdf/generate-pdf', $data);
         }
+
+        // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
+        // return $pdf->download($student_details->fullname.".pdf");
+        // dd($data);
+        return view('pdf/generate-pdf', $data);
     }
 }
