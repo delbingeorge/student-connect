@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="table w-full m-8">
-                            <h3 class="font-semibold text-lg mt-2">Give the attendance percentage</h3>    
+                            <h3 class="font-semibold text-lg mt-2">Attendance percentage</h3>    
                             @if($feedback->semester == 1)
                                 @isset($sem1_subjects)
                                     @foreach ($sem1_subjects as $subject)
@@ -201,7 +201,7 @@
 
                         @if($feedback->semester == 1 && $m<2)
                         <div class="table w-full m-8">
-                            <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$m]->mse_number }}</h3> 
+                            <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$m]->mse_number }} Performance</h3> 
                             @isset($sem1_subjects)
                             @foreach ($sem1_subjects as $subject)
                                 <div class="table-row">
@@ -228,7 +228,7 @@
 
                     @if($feedback->semester == 2 && $n<2)
                         <div class="table w-full m-8">
-                            <h3 class="font-semibold text-lg mt-2">MSE 1</h3> 
+                            <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$n]->mse_number }} Performance</h3> 
                     @isset($sem2_subjects)
                     @foreach ($sem2_subjects as $subject)
                     <div class="table-row">
@@ -255,7 +255,7 @@
 
                     @if($feedback->semester == 3 && $o<2)
                         <div class="table w-full m-8">
-                            <h3 class="font-semibold text-lg mt-2">MSE 1</h3> 
+                            <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$o]->mse_number }} Performance</h3> 
                     @isset($sem3_subjects)
                     @foreach ($sem3_subjects as $subject)
                     <div class="table-row">
@@ -282,7 +282,7 @@
 
                     @if($feedback->semester == 4 && $p<2)
                         <div class="table w-full m-8">
-                            <h3 class="font-semibold text-lg mt-2">MSE 1</h3> 
+                            <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$p]->mse_number }} Performance</h3> 
                     @isset($sem4_subjects)
                     @foreach ($sem4_subjects as $subject)
                     <div class="table-row">
