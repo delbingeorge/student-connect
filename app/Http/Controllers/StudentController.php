@@ -17,6 +17,9 @@ class StudentController extends Controller
 {
     public function feedback_form()
     {
+        if(!Session::has('user_id') || Session::get('role') != "student")
+            return redirect('/');
+        
         // Retrieve student details from session
         $studentName = Session::get('student_name');
         $sem = Session::get('current_semester');
@@ -57,6 +60,9 @@ class StudentController extends Controller
 
     public function submit_feedback_Form(Request $request)
     {
+        if(!Session::has('user_id') || Session::get('role') != "student")
+            return redirect('/');
+
         // Validate the form data
         $validatedData = $request->validate([
             'field1' => 'required',
@@ -142,6 +148,9 @@ class StudentController extends Controller
 
     public function mse_form()
     {
+        if(!Session::has('user_id') || Session::get('role') != "student")
+            return redirect('/');
+
         // Retrieve student details from session
         $studentName = Session::get('student_name');
         $sem = Session::get('current_semester');
@@ -195,6 +204,9 @@ class StudentController extends Controller
 
     public function submit_mse_marks(Request $request)
     {
+        if(!Session::has('user_id') || Session::get('role') != "student")
+            return redirect('/');
+
         $sem = Session::get('current_semester');
         $subjects = Subject::where('semester_number', $sem)->get();
         if ($sem == 1) {

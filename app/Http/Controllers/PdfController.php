@@ -10,12 +10,15 @@ use App\Models\Subject;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class PdfController extends Controller
 {
     public function downloadPdf(Request $request)
     {
-
+        if(!Session::has('user_id') || Session::get('role') == "student"){
+            return redirect('/');
+        }
         $usn = $request->query('usn');
         $student_details = Student::where('student_id', $usn)
             ->first();
@@ -23,20 +26,6 @@ class PdfController extends Controller
 
 
         if ($student_details->semester == 1) {
-            // $feedbacks = FeedbackForm::where('student_id', $usn)
-            //     ->where('semester', 1)
-            //     ->get();
-            // $attendance = Sem_1_attendance::where('student_id', $usn)->get();
-            // $subjects = Subject::where('semester_number', 1)->get();
-            // // dd($attendance);
-            // $mse = Sem_1_mse::where('student_id', $usn)->get();
-            // $data = [
-            //     'student_details' => $student_details,
-            //     'feedbacks' => $feedbacks,
-            //     'attendance' => $attendance,
-            //     'subjects' => $subjects,
-            //     'mse' => $mse,
-            // ];
 
             $feedbacks = DB::select("SELECT * FROM feedback_forms WHERE student_id = ? AND semester = ?", [$usn, 1]);
             $sem1_attendance = DB::select("SELECT * FROM sem_1_attendance WHERE student_id = ?", [$usn]);
@@ -133,9 +122,8 @@ class PdfController extends Controller
             ];
         }
 
-        // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
-        // return $pdf->download($student_details->fullname.".pdf");
-        // dd($data);
-        return view('pdf/generate-pdf', $data);
+        $pdf = Pdf::loadView('pdf/generate-pdf',$data);
+        return $pdf->download($student_details->fullname.".pdf");
+        // return view('pdf/generate-pdf', $data);
     }
 }

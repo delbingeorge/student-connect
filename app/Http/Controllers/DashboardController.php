@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\Session;
 
 
 class DashboardController extends Controller
@@ -17,6 +18,9 @@ class DashboardController extends Controller
 
     public function student()
     {
+        if(!Session::has('user_id') || Session::get('role') != "student")
+            return redirect('/');
+
         return view('student.dashboard');
     }
 

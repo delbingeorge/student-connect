@@ -15,6 +15,9 @@ class FacultyController extends Controller
 {
     public function addStudent(Request $request)
     {
+        if(!Session::has('user_id') || Session::get('role') == "student")
+            return redirect('/');
+
         $request->validate([
             'usn' => 'required',
             'fullname' => 'required',
@@ -60,6 +63,9 @@ class FacultyController extends Controller
 
     public function search(Request $request)
     {
+        if(!Session::has('user_id') || Session::get('role') == "student")
+            return redirect('/');
+        
         $semester = $request->query('semester');
         $id = $request->query('id');
         $role = $request->query('role');

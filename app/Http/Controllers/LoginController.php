@@ -66,7 +66,7 @@ class LoginController extends Controller
                     ->where('users.email', $credentials['email'])
                     ->select('teachers.*')
                     ->first();
-                session(['user_id' => $teacher->emp_id, 'role' => 'teacher', 'isHOD' => true, 'faculty_name' => $teacher->fullname, 'designation' => $teacher->designation, 'contact' => $teacher->contact, 'email' => $credentials['email']]);
+                session(['user_id' => $teacher->emp_id, 'role' => $user->role, 'isHOD' => true, 'faculty_name' => $teacher->fullname, 'designation' => $teacher->designation, 'contact' => $teacher->contact, 'email' => $credentials['email']]);
                 // Redirect teachers to the teacher dashboard
                 return redirect()->route('teacher.dashboard');
             } else {
@@ -85,9 +85,9 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            session(['user_id' => $user->id, 'role' => $user->role]);
 
             if ($user->isAdmin()) {
+                session(['user_id' => $user->id, 'role' => $user->role]);
                 return redirect()->route('admin.dashboard');
             } else {
                 Auth::logout();
