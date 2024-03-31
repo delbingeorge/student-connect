@@ -10,6 +10,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class FacultyController extends Controller
 {
@@ -54,7 +55,6 @@ class FacultyController extends Controller
             if ($errorCode == 1062) {
                 return redirect()->route('teacher.dashboard')->with('error', 'Student USN already exists.');
             }
-            // return redirect()->route('teacher.dashboard')->with('error', 'Database error occurred.');
             dd($errorCode);
         } catch (Exception $exception) {
             return redirect()->route('teacher.dashboard')->with('error', $exception->getMessage());
@@ -73,10 +73,10 @@ class FacultyController extends Controller
         if ($role == 'student') {
             if (isset($semester)) {
                 if ($semester == 'all') {
-                    $students = Student::all();
+                    $students = $students = DB::select("SELECT * FROM students WHERE student_id in (SELECT mentee_id from mentorship WHERE mentor_id = ?)", [session("user_id")]);
                     return redirect()->route('teacher.dashboard');
                 } else {
-                    $students = Student::where('semester', $semester)->get();
+                    $students = DB::select("SELECT * FROM students WHERE student_id in (SELECT mentee_id from mentorship WHERE mentor_id = ?) AND semester = ?", [session("user_id"),$semester]);
                     return view('teacher.dashboard', compact('students'));
                 }
             } elseif (isset($id)) {

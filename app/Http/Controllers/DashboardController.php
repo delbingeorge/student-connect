@@ -6,6 +6,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 
 class DashboardController extends Controller
@@ -13,20 +14,17 @@ class DashboardController extends Controller
     public function admin()
     {
         $teachers = Teacher::all();
-        return view('admin.dashboard',compact('teachers')); 
+        return view('admin.dashboard', compact('teachers'));
     }
 
     public function student()
     {
-        if(!Session::has('user_id') || Session::get('role') != "student")
-            return redirect('/');
-
         return view('student.dashboard');
     }
 
     public function teacher()
     {
-        $students = Student::all();
-        return view('teacher.dashboard',compact('students')); 
+        $students = DB::select("SELECT * FROM students WHERE student_id IN (SELECT mentee_id FROM mentorship WHERE mentor_id = ?)", [session("user_id")]);
+        return view('teacher.dashboard', compact('students'));
     }
 }
