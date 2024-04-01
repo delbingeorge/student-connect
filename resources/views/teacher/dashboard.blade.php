@@ -56,7 +56,6 @@
                     </svg>{{-- <span class="font-medium">Edit Profile</span> --}}
                 </a>
             </div>
-
         </div>
         <div class="px-12 py-8">
             <div class="grid lg:grid-cols-3 grid-rows-1 space-x-6">
