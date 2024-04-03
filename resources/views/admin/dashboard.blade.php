@@ -59,7 +59,7 @@
                     <h1 class="text-lg">{{ $teacher->contact }}</h1>
                     <a href="{{ route('edit-faculty', ['teacher_id' => $teacher->emp_id]) }}">
                         <div>
-                            {{-- <x-feathericon-edit class="w-5 h-5" /> --}}
+                            edit
                         </div>
                     </a>
                 </div>

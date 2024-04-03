@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Teacher;
@@ -12,6 +13,9 @@ class AdminController extends Controller
 {
     public function addFaculty(Request $request)
     {
+        if (!Session::has('user_id') || Session::get('role') != "admin")
+            return redirect('admin');
+
         $request->validate([
             'id' => 'required',
             'name' => 'required',
@@ -49,8 +53,11 @@ class AdminController extends Controller
 
     public function editFaculty(Request $request)
     {
+        if (!Session::has('user_id') || Session::get('role') != "admin")
+            return redirect('admin');
+
         $request->validate([
-            'emp_id'=> 'required',
+            'emp_id' => 'required',
             'name' => 'required',
             'contact' => 'required',
         ]);

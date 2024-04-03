@@ -13,7 +13,6 @@
             <div class="-space-y-3">
                 <a href="{{ route('admin.dashboard') }}"
                     class="flex items-center justify-center space-x-2 text-2xl font-medium">
-                    {{-- <x-heroicon-o-arrow-small-left class="w-7 h-7" /> --}}
                     <span>
                         Edit Faculty
                     </span>
@@ -44,18 +43,6 @@
                                 class="bg-secondary w-full px-3 py-3 rounded-md outline-none border-2 focus:border-black/70 border-black/20"
                                 placeholder="XXXXXXXXXX" value="{{$teachers->contact}}" required>
                         </div>
-                        <!-- <div>
-                            <p class="font-medium pb-2">Email:</p>
-                            <input type="mail" name="email"
-                                class="bg-secondary w-full px-3 py-3 rounded-md outline-none border-2 focus:border-black/70 border-black/20"
-                                placeholder="*******nmamit.in" required>
-                        </div>
-                        <div>
-                            <p class="font-medium pb-2">Password:</p>
-                            <input type="password" name="password"
-                                class="bg-secondary w-full px-3 py-3 rounded-md outline-none border-2 focus:border-black/70 border-black/20"
-                                placeholder="***************" required>
-                        </div> -->
                     </div>
                 </div>
                 <div class="flex items-center justify-center flex-col">
@@ -63,25 +50,8 @@
                         class="text-md bg-primary w-[85%] lg:w-56 text-light py-3 rounded-lg border-[2px] border-primary hover:bg-primary/90 cursor-pointer duration-300 font-medium">
                 </div>
             </form>
-            <!-- <div>
-                @if (session('error'))
-                    <div id="error-message" class="absolute z-40 bg-red-100 rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
-                        <div class="flex items-center justify-center space-x-2 text-red-500">
-                            <x-heroicon-o-user class="w-5 h-5" />
-                            <h1 class="">
-                                {{ session('error') }}
-                            </h1>
-                        </div>
-                    </div>
-                @endif
-            </div> -->
         </div>
     </div>
-    <!-- <script>
-        setTimeout(function() {
-            document.getElementById('error-message').style.display = 'none';
-        }, 5000);
-    </script> -->
 </body>
 
 </html>

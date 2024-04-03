@@ -78,8 +78,8 @@
                 </div> -->
             </div>
         </div>
-        <div class="px-4 lg:px-12 py-8">
-            <a href="{{ route('third-sem-subjects') }}" class="text-2xl font-medium">Subject Updates</a>
+        <!-- <div class="px-4 lg:px-12 py-8">
+            <a href="" class="text-2xl font-medium">Subject Updates</a>
             <div class="grid grid-cols-1 lg:grid-cols-1 gap-3 lg:gap-6 w-full pt-4">
                 <div
                     class="flex items-center justify-between border-[3px] border-secondary hover:border-[#e5e7eb] cursor-pointer group bg-secondary space-x-4 px-6 py-4 rounded-lg duration-300">
@@ -130,41 +130,41 @@
                     </svg>
                 </div>
             </div>
-        </div>
+        </div> -->
         {{-- <div class="px-4 lg:px-12 py-8">
             <h1 class="text-2xl font-medium mb-6">Subject Updates</h1>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6 w-full">
-                <a href="{{ route('third-sem-subjects') }}"
+                <a href=""
                     class="flex items-center justify-start border-[3px] border-secondary hover:border-[#e5e7eb] cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
                     <x-feathericon-book
                         class="w-7 h-7 group-hover:scale-[1.1] group-hover:text-blue-500 duration-300" />
                     <h1 class="font-medium text-xl group-hover:text-dark/80">Data Structure & Algorithm</h1>
                 </a>
-                <a href="{{ route('third-sem-subjects') }}"
+                <a href=""
                     class="flex items-center justify-start border-[3px] border-secondary hover:border-[#e5e7eb] cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
                     <x-feathericon-book
                         class="w-7 h-7 group-hover:scale-[1.1] group-hover:text-blue-500 duration-300" />
                     <h1 class="font-medium text-xl group-hover:text-dark/80">Advanced DB Management System</h1>
                 </a>
-                <a href="{{ route('third-sem-subjects') }}"
+                <a href=""
                     class="flex items-center justify-start border-[3px] border-secondary hover:border-[#e5e7eb] cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
                     <x-feathericon-book
                         class="w-7 h-7 group-hover:scale-[1.1] group-hover:text-blue-500 duration-300" />
                     <h1 class="font-medium text-xl group-hover:text-dark/80">Software Engineering & Technology</h1>
                 </a>
-                <a href="{{ route('third-sem-subjects') }}"
+                <a href=""
                     class="flex items-center justify-start border-[3px] border-secondary hover:border-[#e5e7eb] cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
                     <x-feathericon-book
                         class="w-7 h-7 group-hover:scale-[1.1] group-hover:text-blue-500 duration-300" />
                     <h1 class="font-medium text-xl group-hover:text-dark/80">Mathamatical Fundamentals</h1>
                 </a>
-                <a href="{{ route('third-sem-subjects') }}"
+                <a href=""
                     class="flex items-center justify-start border-[3px] border-secondary hover:border-[#e5e7eb] cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
                     <x-feathericon-book
                         class="w-7 h-7 group-hover:scale-[1.1] group-hover:text-blue-500 duration-300" />
                     <h1 class="font-medium text-xl group-hover:text-dark/80">Computer Oriented Architecture</h1>
                 </a>
-                <a href="{{ route('third-sem-subjects') }}"
+                <a href=""
                     class="flex items-center justify-start border-[3px] border-secondary hover:border-[#e5e7eb] cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
                     <x-feathericon-book
                         class="w-7 h-7 group-hover:scale-[1.1] group-hover:text-blue-500 duration-300" />
