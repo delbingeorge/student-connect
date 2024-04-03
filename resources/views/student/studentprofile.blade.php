@@ -35,8 +35,8 @@
             </div>
             <div class="flex items-end justify-between w-[60%] md:w-[90%]">
                 <div class="mx-2 -space-y-2 lg:space-y-0 lg:mx-4 mt-4">
-                    <h1 class="text-2xl lg:text-3xl font-semibold">{{ session('student_name') }}</h1>
-                    <p class="text-lg lg:text-xl text-gray-600">{{ session('email') }}</p>
+                    <h1 class="text-2xl lg:text-3xl font-semibold">{{ $data->fullname }}</h1>
+                    <p class="text-lg lg:text-xl text-gray-600">{{ $data->student_id }}</p>
                 </div>
                 <div class="hidden lg:flex flex-row space-x-2">
                     <a href="{{ route('edit-profile') }}"
@@ -64,28 +64,28 @@
         <div class="space-y-3 mt-4 lg:mt-8 px-4 lg:px-0 pb-8">
             <div class="space-y-1">
                 <h1 class="font-semibold tracking-widest text-black/70">ABOUT ME</h1>
-                <p class="text-lg">Passionate MCA student, coding enthusiast. Thrives
-                    on crafting elegant solutions. Constant learner
-                    embracing tech's limitless possibilities. 😋</p>
+                <p class="text-lg">{{ $data->about }}</p>
             </div>
             <div class="space-y-4">
                 <h1 class="font-semibold tracking-widest text-black/70">INTERESTS & SKILLS</h1>
                 <div class="flex flex-wrap gap-2">
-                    <span class="text-md bg-black/10 py-2 px-4 rounded-lg text-center">Programming</span>
-                    <span class="text-md bg-black/10 py-2 px-4 rounded-lg text-center">Dancing</span>
-                    <span class="text-md bg-black/10 py-2 px-4 rounded-lg text-center">Reading</span>
-                    <span class="text-md bg-black/10 py-2 px-4 rounded-lg text-center">Traveling</span>
-                    <span class="text-md bg-black/10 py-2 px-4 rounded-lg text-center">Photography</span>
-                    <span class="text-md bg-black/10 py-2 px-4 rounded-lg text-center">Gaming</span>
+                    @foreach (explode(', ', $data->skills) as $skill)
+                        <span class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
+                        <span>{{ $skill }}</span>
+                        </span>
+                    @endforeach
                 </div>
             </div>
 
             <div class="space-y-4">
-                <h1 class="font-semibold tracking-widest text-black/70">PROJECTS</h1>
-                <ul class="list-inside list-disc">
-                    <li>Fitness App using Flutter</li>
-                    <li>Fitness App using Flutter</li>
-                </ul>
+                <h1 class="font-semibold tracking-widest text-black/70">PROJECTS{{ session('pending_feedback_number') }}</h1>
+                <div class="flex flex-wrap gap-2">
+                    @foreach (explode(', ', $data->projects) as $project)
+                        <span class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
+                        <span>{{ $project }}</span>
+                        </span>
+                    @endforeach
+                </div>
             </div>
             <div class="space-y-4">
                 <h1 class="font-semibold tracking-widest text-black/70">OBJECTIVES</h1>
@@ -98,7 +98,17 @@
                             <path fill="currentColor"
                                 d="M464 256a208 208 0 1 1-416 0a208 208 0 1 1 416 0M0 256a256 256 0 1 0 512 0a256 256 0 1 0-512 0m232-136v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24" />
                         </svg>
-                        <h1 class="font-medium text-xl group-hover:text-dark/80">Complete your profile!</h1>
+                        <a href="{{ route('feedback-form') }}"
+                    class="flex items-center justify-start cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-7 h-7 group-hover:rotate-[30deg] group-hover:text-[#ffd000] duration-300"
+                        viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                            d="M464 256a208 208 0 1 1-416 0a208 208 0 1 1 416 0M0 256a256 256 0 1 0 512 0a256 256 0 1 0-512 0m232-136v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24" />
+                    </svg>
+                    <h1 class="font-medium text-xl group-hover:text-dark/80">Performance Feedback form</h1>
+                </a>
                     </a>
                     <div
                         class="flex items-center justify-start cursor-not-allowed group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">

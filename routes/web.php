@@ -5,6 +5,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StudentController;
+use App\Models\Student;
 use App\Models\Teacher;
 
 use Illuminate\Support\Facades\Route;
@@ -40,18 +41,21 @@ Route::get('/', function () {
 /******************************Student and Faculty edit profile*************************************/
 Route::get('/edit-profile', function () {
     if (Session::has('user_id') && Session::get('role') == "student") {
-        return view('student/edit-profile');
-    } else if (Session::has('user_id') && Session::get('role') == "teacher") {
+        $data = Student::where('student_id', session('user_id'))->first();
+        return view('student/edit-profile', compact('data'));
+    } else if (Session::has('user_id') && Session::get('role') == "teacher") {     //Currently NO edit profile for teachers
         return view('teacher/edit-profile');
     } else {
         return redirect('/');
     }
 })->name('edit-profile');
 
+Route::post('/edit-student-profile', [StudentController::class, 'edit_profile'])->name('edit-student-profile');
+
 
 
 /******************************Feedback From*************************************/
-Route::get('/redirecting-to-feedback-form', [StudentController::class, 'feedback_form'])->name('feedback-form');
+Route::get('/redirect-to-feedback-form', [StudentController::class, 'feedback_form'])->name('feedback-form');
 Route::get('student-feedback-form', function () {
     if (Session::has('user_id') && Session::get('role') == "student") {
         $studentName = session('studentName');
@@ -67,7 +71,7 @@ Route::post('/submit-feedback-form', [StudentController::class, 'submit_feedback
 
 
 /******************************MSE Marks From*************************************/
-Route::get('/redirecting-first-mse-form', [StudentController::class, 'mse_form'])->name('first-mse-form');
+Route::get('/redirect-first-mse-form', [StudentController::class, 'mse_form'])->name('first-mse-form');
 Route::get('student-first-mse-form', function () {
     if (Session::has('user_id') && Session::get('role') == "student") {
         $studentName = session('studentName');
@@ -79,7 +83,7 @@ Route::get('student-first-mse-form', function () {
     }
 })->name('student-first-mse-form');
 
-Route::get('/redirecting-second-mse-form', [StudentController::class, 'mse_form'])->name('second-mse-form');
+Route::get('/redirect-second-mse-form', [StudentController::class, 'mse_form'])->name('second-mse-form');
 Route::get('student-second-mse-form', function () {
     if (Session::has('user_id') && Session::get('role') == "student") {
         $studentName = session('studentName');
@@ -157,7 +161,8 @@ Route::get('/profile', function () {
 
 Route::get('/student-profile', function () {
     if (Session::has('user_id') && Session::get('role') == "student") {
-        return view('student/studentprofile');
+        $data = Student::where('student_id', session('user_id'))->first();
+        return view('student/studentprofile',compact('data'));
     } else {
         return redirect('/');
     }

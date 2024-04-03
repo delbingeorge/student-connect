@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\Subject;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\FeedbackForm;
@@ -15,11 +17,37 @@ use App\Models\Sem_4_mse;
 
 class StudentController extends Controller
 {
+
+    public function edit_profile(Request $request)
+    {
+        if (!Session::has('user_id') || Session::get('role') != "student")
+            return redirect('/');
+
+        $request->validate([
+            'about' => 'required',
+            'skills' => 'required',
+            'projects' => 'required',
+        ]);
+
+        try {
+            $student = Student::where('student_id', session("user_id"))->first();
+            $student->about = $request->about;
+            $student->skills = $request->skills;
+            $student->projects = $request->projects;
+            $student->save();
+
+            return redirect()->route('student_dashboard')->with('success', 'Profile Updated');
+        } catch (QueryException $exception) {
+            return redirect()->route('admin.dashboard')->with('message', 'An error occurred while updating profile.');
+        }
+
+    }
+
     public function feedback_form()
     {
-        if(!Session::has('user_id') || Session::get('role') != "student")
+        if (!Session::has('user_id') || Session::get('role') != "student")
             return redirect('/');
-        
+
         // Retrieve student details from session
         $studentName = Session::get('student_name');
         $sem = Session::get('current_semester');
@@ -60,7 +88,7 @@ class StudentController extends Controller
 
     public function submit_feedback_Form(Request $request)
     {
-        if(!Session::has('user_id') || Session::get('role') != "student")
+        if (!Session::has('user_id') || Session::get('role') != "student")
             return redirect('/');
 
         // Validate the form data
@@ -148,7 +176,7 @@ class StudentController extends Controller
 
     public function mse_form()
     {
-        if(!Session::has('user_id') || Session::get('role') != "student")
+        if (!Session::has('user_id') || Session::get('role') != "student")
             return redirect('/');
 
         // Retrieve student details from session
@@ -204,7 +232,7 @@ class StudentController extends Controller
 
     public function submit_mse_marks(Request $request)
     {
-        if(!Session::has('user_id') || Session::get('role') != "student")
+        if (!Session::has('user_id') || Session::get('role') != "student")
             return redirect('/');
 
         $sem = Session::get('current_semester');

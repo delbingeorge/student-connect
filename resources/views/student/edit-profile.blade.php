@@ -43,118 +43,39 @@
             </div>
             <div class="flex items-end justify-between w-[60%] md:w-[90%]">
                 <div class="mx-3 -space-y-2 lg:space-y-0 lg:mx-4 mt-4">
-                    <h1 class="text-2xl lg:text-3xl font-semibold">Bruce Wayne</h1>
-                    <p class="text-lg lg:text-xl text-gray-600">nnm23mc000@nmamit.in</p>
+                    <h1 class="text-2xl lg:text-3xl font-semibold">{{ $data->fullname }}</h1>
+                    <p class="text-lg lg:text-xl text-gray-600">{{ $data->student_id }}</p>
                 </div>
             </div>
         </div>
-        <form class="space-y-3 mt-4 lg:mt-8 px-4 lg:px-0 pb-8">
+        <form class="space-y-3 mt-4 lg:mt-8 px-4 lg:px-0 pb-8" action="{{ route('edit-student-profile') }}" method="post">
+    @csrf
             <div class="space-y-1">
                 <h1 class="font-semibold tracking-widest text-black/70">ABOUT ME</h1>
-                <input type="text" class="py-3 px-2 w-full rounded-lg bg-dark/10"
-                    placeholder="Passionate MCA student, coding enthusiast. Thrives on crafting elegant solutions. Constant learner embracing tech's limitless possibilities. 😋">
+                <input type="text" name="about" class="py-3 px-2 w-full rounded-lg bg-dark/10"
+                    placeholder="About You"
+                    value="{{ $data->about }}" required>
             </div>
             <div class="space-y-4">
                 <h1 class="font-semibold tracking-widest text-black/70">INTERESTS & SKILLS</h1>
                 <div class="flex flex-wrap gap-2">
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Programming
-                        </span>
-                        {{-- <x-heroicon-m-x-mark class="w-5 h-5 hover:text-red-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Dancing
-                        </span>
-                        {{-- <x-heroicon-m-x-mark class="w-5 h-5 hover:text-red-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Reading
-                        </span>
-                        {{-- <x-heroicon-m-x-mark class="w-5 h-5 hover:text-red-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Traveling
-                        </span>
-                        {{-- <x-heroicon-m-x-mark class="w-5 h-5 hover:text-red-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Photography </span>
-                        {{-- <x-heroicon-m-x-mark class="w-5 h-5 hover:text-red-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Gaming </span>
-                        {{-- <x-heroicon-m-x-mark class="w-5 h-5 hover:text-red-600 cursor-pointer" /> --}}
-                    </span>
-                </div>
-                <h1 class="font-semibold tracking-widest text-black/70">ADD NEW</h1>
-                <div class="flex flex-wrap gap-2">
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Programming
-                        </span>
-                        {{-- <x-heroicon-m-plus class="w-5 h-5 hover:text-red-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Dancing
-                        </span>
-                        {{-- <x-heroicon-m-plus class="w-5 h-5 hover:text-green-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Reading
-                        </span>
-                        {{-- <x-heroicon-m-plus class="w-5 h-5 hover:text-green-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Traveling
-                        </span>
-                        {{-- <x-heroicon-m-plus class="w-5 h-5 hover:text-green-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Photography </span>
-                        {{-- <x-heroicon-m-plus class="w-5 h-5 hover:text-green-600 cursor-pointer" /> --}}
-                    </span>
-                    <span
-                        class="text-md flex items-center justify-center space-x-3 bg-black/10 py-2 px-4 rounded-lg text-center">
-                        <span>
-                            Gaming </span>
-                        {{-- <x-heroicon-m-plus class="w-5 h-5 hover:text-green-600 cursor-pointer" /> --}}
-                    </span>
+                    <input type="text" name="skills" class="py-3 px-2 w-full rounded-lg bg-dark/10"
+                        placeholder="Enter your skills (Example : Skill1, Skill2, ...)"
+                        value="{{ $data->skills }}" required>
                 </div>
             </div>
             <div class="space-y-4">
                 <h1 class="font-semibold tracking-widest text-black/70">PROJECTS</h1>
-                <ul class="list-inside list-disc space-y-2">
-                    <li class="py-3 px-2 w-full rounded-lg bg-dark/10">Fitness App using Flutter</li>
-                    <input type="text" class="py-3 px-2 w-full rounded-lg bg-dark/10"
-                        placeholder="Add new project here!">
-                </ul>
+                <input type="text" name="projects" class="py-3 px-2 w-full rounded-lg bg-dark/10"
+                    placeholder="Add new project here!"
+                    value="{{ $data->projects }}" required>
             </div>
             <div class="space-x-4 w-full flex items-end justify-end">
-                <input type="button" value="Discard"
-                    class="text-md bg-secondary w-[85%] lg:w-56 py-3 rounded-lg border-[2px] text-primary border-primary cursor-pointer duration-300 font-medium">
-                <input type="button" value="Save"
-                    class="text-md bg-primary w-[85%] lg:w-56 text-light py-3 rounded-lg border-[2px] border-primary hover:bg-primary/90 cursor-pointer duration-300 font-medium">
+                <a href="{{ route('student-profile') }}" class="text-md bg-secondary w-[85%] lg:w-56 py-3 rounded-lg border-[2px] text-primary border-primary cursor-pointer duration-300 font-medium text-center">
+                Discard
+                </a>
+                <input type="submit" value="Save"
+                    class="text-md bg-primary w-[85%] lg:w-56 text-light py-3 rounded-lg border-[2px] border-primary hover:bg-primary/90 cursor-pointer duration-300 font-medium text-center">
             </div>
         </form>
 </body>

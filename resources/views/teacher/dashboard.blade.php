@@ -107,18 +107,20 @@
             </div>
         </div>
         <div class="px-12">
-            <div class="grid grid-cols-5 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
+            <div class="grid grid-cols-6 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
                 <h1 class="text-lg font-medium">Student USN</h1>
                 <h1 class="text-lg font-medium">Student Name</h1>
-                <h1 class="text-lg font-medium">Contact</h1>
                 <h1 class="text-lg font-medium">Semester</h1>
+                <h1 class="text-lg font-medium">Email</h1>
+                <h1 class="text-lg font-medium">Contact</h1>
             </div>
             @foreach ($students as $student)
-                <div class="grid grid-cols-5 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
+                <div class="grid grid-cols-6 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
                     <h1 class="text-lg">{{ $student->student_id }}</h1>
                     <h1 class="text-lg">{{ $student->fullname }}</h1>
-                    <h1 class="text-lg">{{ $student->contact }}</h1>
                     <h1 class="text-lg">{{ $student->semester }}</h1>
+                    <h1 class="text-lg">{{ $student->email }}</h1>
+                    <h1 class="text-lg">{{ $student->contact }}</h1>
                     <!-- <a href="route('edit-student', ['student_id' => $student->student_id])">
                     <div>
                         {{-- <x-feathericon-edit class="w-5 h-5" /> --}}

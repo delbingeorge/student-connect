@@ -15,6 +15,10 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();
             $table->string('contact')->nullable();
             $table->integer('semester');
+            $table->string('about')->nullable();
+            $table->string('skills')->nullable();
+            $table->string('projects')->nullable();
+
             $table->foreign('student_id')->references('user_id')->on('users');
             $table->foreign('semester')->references('semester_number')->on('semesters');
             $table->timestamps();
