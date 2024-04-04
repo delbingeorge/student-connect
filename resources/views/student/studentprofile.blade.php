@@ -87,47 +87,6 @@
                     @endforeach
                 </div>
             </div>
-            <div class="space-y-4">
-                <h1 class="font-semibold tracking-widest text-black/70">OBJECTIVES</h1>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
-                    <a {{-- href="{{ route('general-form') }}" --}}
-                        class="flex items-center justify-start cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="w-7 h-7 group-hover:rotate-[30deg] group-hover:text-[#ffd000] duration-300"
-                            viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M464 256a208 208 0 1 1-416 0a208 208 0 1 1 416 0M0 256a256 256 0 1 0 512 0a256 256 0 1 0-512 0m232-136v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24" />
-                        </svg>
-                        <a href="{{ route('feedback-form') }}"
-                    class="flex items-center justify-start cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-7 h-7 group-hover:rotate-[30deg] group-hover:text-[#ffd000] duration-300"
-                        viewBox="0 0 512 512">
-                        <path fill="currentColor"
-                            d="M464 256a208 208 0 1 1-416 0a208 208 0 1 1 416 0M0 256a256 256 0 1 0 512 0a256 256 0 1 0-512 0m232-136v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24" />
-                    </svg>
-                    <h1 class="font-medium text-xl group-hover:text-dark/80">Performance Feedback form</h1>
-                </a>
-                    </a>
-                    <div
-                        class="flex items-center justify-start cursor-not-allowed group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-black/30" viewBox="0 0 448 512">
-                            <path fill="currentColor"
-                                d="M144 144v48h160v-48c0-44.2-35.8-80-80-80s-80 35.8-80 80m-64 48v-48C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64z" />
-                        </svg>
-                        <h1 class="font-medium text-xl text-dark/30">Update first MSE Marks</h1>
-                    </div>
-                    <div
-                        class="flex items-center justify-start cursor-not-allowed group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-black/30" viewBox="0 0 448 512">
-                            <path fill="currentColor"
-                                d="M144 144v48h160v-48c0-44.2-35.8-80-80-80s-80 35.8-80 80m-64 48v-48C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64z" />
-                        </svg>
-                        <h1 class="font-medium text-xl text-dark/30">Update second MSE Marks</h1>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div id="sidebar"
