@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full justify-between  border border-collapse border border-gray-300">
+                <div class="flex w-full justify-between border-collapse border border-gray-300">
                     <div class="w-2/4 flex border ">
                         <div class="table-cell font-medium border-gray-300 p-2">Mobile No:</div>
                         <div class="table-cell ml-8 font-semibold border-gray-300 p-2">
