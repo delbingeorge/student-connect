@@ -10,20 +10,54 @@
 <body class="font-poppy bg-white  px-4 py-8 flex items-center justify-center">
     <div class="max-w-4xl flex items-center justify-center flex-col">
         <img src="/images/nitte-nmamit-logo.png" class="w-5/6 my-4" />
+        <h1 class="font-serif text-md mb-2">(An off-Campus Institution of NITTE (DEEMED TO BE UNIVERSITY), MANGALORE)
+        </h1>
+
+        <h1 class="text-3xl font-bold mt-4">DEPARTMENT OF MCA</h1>
+        <div class="w-5/6 bg-black h-1"></div>
+        <h1 class="text-xl font-semibold mt-4">Student Performance Monitoring System</h1>
         <div class="w-5/6">
-            <h1 class="font-semibold text-xl mb-4 text-gray-800">STUDENT INFO</h1>
-            <div>
-                <div class="table w-full border-collapse border border-gray-300">
-                    <div class="table-row ">
-                        <div class="table-cell font-medium border border-gray-300 p-2">Full Name:</div>
-                        <div class="table-cell font-semibold border border-gray-300 p-2">
+            <h1 class="font-semibold text-xl mb-3 text-gray-800">Student Info</h1>
+            <div class="border">
+                <div class="flex w-full justify-between border  border-collapse border-gray-300">
+                    <div class="w-2/4 flex border">
+                        <div class="table-cell font-medium border-gray-300 p-2">USN:</div>
+                        <div class="table-cell ml-8 font-semibold border-gray-300 p-2">
+                            {{ $student_details->student_id }}
+                        </div>
+                    </div>
+                    <div class=" w-2/4 border">
+                        <div class="table-cell font-medium  border-gray-300 p-2">Student Name:</div>
+                        <div class="table-cell  font-semibold  border-gray-300 p-2">
                             {{ $student_details->fullname }}
                         </div>
                     </div>
-                    <div class="table-row">
-                        <div class="table-cell font-medium border border-gray-300 p-2">USN:</div>
-                        <div class="table-cell font-semibold border border-gray-300 p-2">
-                            {{ $student_details->student_id }}
+                </div>
+                <div class="flex w-full justify-between  border border-collapse border border-gray-300">
+                    <div class="w-2/4 flex border ">
+                        <div class="table-cell font-medium border-gray-300 p-2">Mobile No:</div>
+                        <div class="table-cell ml-8 font-semibold border-gray-300 p-2">
+                            {{ $student_details->contact }}
+                        </div>
+                    </div>
+                    <div class=" w-2/4 border">
+                        <div class="table-cell font-medium  border-gray-300 p-2">Email ID:</div>
+                        <div class="table-cell  font-semibold  border-gray-300 p-2">
+                            {{ $student_details->email }}
+                        </div>
+                    </div>
+                </div>
+                <div class="flex w-full justify-between border border-collapse border-gray-300">
+                    <div class="w-2/4 flex border">
+                        <div class="table-cell font-medium border-gray-300 p-2">Proctor:</div>
+                        <div class="table-cell ml-8 font-semibold border-gray-300 p-2">
+                            {{-- {{ $student_details->contact }} --}}
+                        </div>
+                    </div>
+                    <div class="border w-2/4">
+                        <div class="table-cell font-medium  border-gray-300 p-2">Designation:</div>
+                        <div class="table-cell  font-semibold  border-gray-300 p-2">
+                            {{-- {{ $student_details->email }} --}}
                         </div>
                     </div>
                 </div>
