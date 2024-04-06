@@ -122,8 +122,8 @@ class PdfController extends Controller
             ];
         }
 
-        // $pdf = Pdf::loadView('pdf/generate-pdf',$data);
-        // return $pdf->download($student_details->fullname.".pdf");
-        return view('pdf/generate-pdf', $data);
+        $pdf = Pdf::loadView('pdf/generate-pdf', $data);
+        return $pdf->download("Download.pdf");
+        // return view('pdf/generate-pdf', $data);
     }
 }
