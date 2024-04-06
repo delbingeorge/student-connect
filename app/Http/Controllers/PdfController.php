@@ -16,7 +16,7 @@ class PdfController extends Controller
 {
     public function downloadPdf(Request $request)
     {
-        if(!Session::has('user_id') || Session::get('role') == "student"){
+        if (!Session::has('user_id') || Session::get('role') == "student") {
             return redirect('/');
         }
         $usn = $request->query('usn');
