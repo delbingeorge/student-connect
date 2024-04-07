@@ -107,6 +107,7 @@ Route::get('/admin', function () {
 Route::post('/admin_login', [LoginController::class, 'admin_login'])->name('admin_login');
 Route::post('/add_faculty', [AdminController::class, 'addFaculty'])->name('add_faculty');
 Route::post('/edit_faculty', [AdminController::class, 'editFaculty'])->name('edit_faculty');
+Route::get('/increment_semester', [AdminController::class, 'incrementSemester'])->name('increment_semester');
 
 Route::get('/add-faculty', function () {
     if (Session::has('user_id') && Session::get('role') == "admin") {

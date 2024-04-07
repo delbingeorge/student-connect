@@ -28,7 +28,7 @@
                         <div>
                             <p class="font-medium pb-2">EMP ID:</p>
                             <input type="text" name="emp_id"
-                                class="bg-secondary w-full px-3 py-3 rounded-md outline-none border-2 focus:border-black/70 border-black/20"
+                                class="bg-secondary w-full cursor-not-allowed px-3 py-3 rounded-md outline-none border-2 focus:border-black/70 border-black/20"
                                 placeholder="Faculty Number" value="{{$teachers->emp_id}}" readonly>
                         </div>
                         <div>
@@ -36,6 +36,12 @@
                             <input type="text" name="name"
                                 class="bg-secondary w-full px-3 py-3 rounded-md outline-none border-2 focus:border-black/70 border-black/20"
                                 placeholder="Faculty Name" value="{{$teachers->fullname}}" required>
+                        </div>
+                        <div>
+                            <p class="font-medium pb-2">Designation:</p>
+                            <input type="text" name="designation"
+                                class="bg-secondary w-full px-3 py-3 rounded-md outline-none border-2 focus:border-black/70 border-black/20"
+                                placeholder="Designation" value="{{$teachers->designation}}" required>
                         </div>
                         <div>
                             <p class="font-medium pb-2">Contact Number:</p>

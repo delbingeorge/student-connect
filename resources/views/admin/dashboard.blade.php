@@ -21,8 +21,11 @@
                 </div> --}}
                 <a href="{{ route('logout') }}"
                     class="text-primary hover:bg-secondary border-2 group hover:bg-primary/20 duration-200 cursor-pointer flex items-center justify-center rounded-full py-3 px-3 space-x-1">
-                    {{-- <x-feathericon-log-out class="w-6 h-6 group-hover:translate-x-1 duration-300" /> --}}
-                    {{-- <span class="font-medium">Edit Profile</span> --}}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:translate-x-1 duration-300"
+                    viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h7v2H5v14h7v2zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5z" />
+                    </svg>
                 </a>
             </div>
         </nav>
@@ -36,6 +39,18 @@
                         class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
                         <span class="text-xl">Add</span>
+                    </div>
+                </a>
+            </div>
+            <div class="flex items-center justify-between mb-6 bg-secondary py-4 px-2 rounded-lg">
+                <h1 class="text-2xl font-medium">
+                    Increment student semester
+                </h1>
+                <a href="{{ route('increment_semester') }}">
+                    <div
+                        class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
+                        {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
+                        <span class="text-xl">Next Semester</span>
                     </div>
                 </a>
             </div>

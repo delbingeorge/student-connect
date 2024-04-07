@@ -121,13 +121,13 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @isset($sem1_attendance[$i])
+                                                @if($sem1_attendance[$i]->{$subject->subject_code}!=null)
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem1_attendance[$i]->{$subject->subject_code} }}%
                                                 </div>
                                             @else
                                                 <div class="table-cell border border-gray-300 p-2">
-                                                    No attendance recorded for this subject.
+                                                    No attendance recorded/Course not opted
                                                 </div>
                                             @endisset
                                         </div>
@@ -146,15 +146,15 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @isset($sem2_attendance[$j])
+                                            @if($sem2_attendance[$j]->{$subject->subject_code}!=null)
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem2_attendance[$j]->{$subject->subject_code} }}%
                                                 </div>
                                             @else
                                                 <div class="table-cell border border-gray-300 p-2">
-                                                    No attendance recorded for this subject.
+                                                    No attendance recorded/Course not opted
                                                 </div>
-                                            @endisset
+                                            @endif
                                         </div>
                                     @endforeach
                                 @else
@@ -171,13 +171,13 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @isset($sem3_attendance[$k])
+                                                @if($sem3_attendance[$k]->{$subject->subject_code}!=null)
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem3_attendance[$k]->{$subject->subject_code} }}%
                                                 </div>
                                             @else
                                                 <div class="table-cell border border-gray-300 p-2">
-                                                    No attendance recorded for this subject.
+                                                    No attendance recorded/Course not opted
                                                 </div>
                                             @endisset
                                         </div>
@@ -196,13 +196,13 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @isset($sem4_attendance[$l])
+                                                @if($sem4_attendance[$l]->{$subject->subject_code}!=null)
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem4_attendance[$l]->{$subject->subject_code} }}%
                                                 </div>
                                             @else
                                                 <div class="table-cell border border-gray-300 p-2">
-                                                    No attendance recorded for this subject.
+                                                    No attendance recorded/Course not opted
                                                 </div>
                                             @endisset
                                         </div>

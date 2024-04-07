@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Session;
@@ -59,18 +60,30 @@ class AdminController extends Controller
         $request->validate([
             'emp_id' => 'required',
             'name' => 'required',
+            'designation' => 'required',
             'contact' => 'required',
         ]);
 
         try {
             $teacher = Teacher::where('emp_id', $request->emp_id)->first();
-            $teacher->contact = $request->contact;
             $teacher->fullname = $request->name;
+            $teacher->contact = $request->contact;
+            $teacher->designation = $request->designation;
             $teacher->save();
 
             return redirect()->route('admin.dashboard')->with('success', 'Faculty updated successfully.');
         } catch (QueryException $exception) {
             return redirect()->route('admin.dashboard')->with('message', 'An error occurred while updating faculty.');
+        }
+    }
+
+    public function incrementSemester(Request $request)
+    {
+        try {
+            Student::increment('semester');
+            return redirect()->route('admin.dashboard')->with('success', 'Semester updated successfully.');
+        } catch (QueryException $exception) {
+            return redirect()->route('admin.dashboard')->with('message', 'An error occurred while updating the semester.');
         }
     }
 }
