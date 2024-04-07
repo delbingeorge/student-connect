@@ -119,7 +119,7 @@
                 </div>
             </div>
             <div>
-                <h1 class="font-semibold tracking-widest mb-3 text-black/70 uppercase">Give dffffffffffffffffffffthe attendance percentage
+                <h1 class="font-semibold tracking-widest mb-3 text-black/70 uppercase">Give the attendance percentage
                 </h1>
                 <div class="flex flex-col text-xl space-y-4 mb-4">
                     <div class="w-2/4 flex flex-col space-y-4 items-center justify-between">
