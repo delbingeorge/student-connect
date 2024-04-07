@@ -116,8 +116,21 @@
                 </svg>
                 {{-- <span class="font-medium">Close</span> --}}
             </div>
+            
         </div>
 
+        <div>
+            @if (session('success'))
+                <div id="message" class="absolute z-40 bg-green-500 rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
+                    <div class="flex items-center justify-center space-x-2 text-white">
+                        {{-- <x-heroicon-o-user class="w-5 h-5" /> --}}
+                        <h1 class="">
+                            {{ session('success') }}
+                        </h1>
+                    </div>
+                </div>
+            @endif
+        </div>
         <script>
             const sidebar = document.getElementById('sidebar');
             const closeSidebar = document.getElementById('closeSidebar');
@@ -130,6 +143,10 @@
             closeSidebar.addEventListener('click', function() {
                 sidebar.classList.add('-translate-x-full');
             });
+
+            setTimeout(function() {
+                document.getElementById('message').style.display = 'none';
+            }, 5000);
         </script>
 </body>
 

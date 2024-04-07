@@ -36,9 +36,9 @@ class StudentController extends Controller
             $student->projects = $request->projects;
             $student->save();
 
-            return redirect()->route('student_dashboard')->with('success', 'Profile Updated');
+            return redirect()->route('student-profile')->with('success', 'Profile Updated');
         } catch (QueryException $exception) {
-            return redirect()->route('admin.dashboard')->with('message', 'An error occurred while updating profile.');
+            return redirect()->route('student.dashboard')->with('message', 'An error occurred while updating profile.');
         }
 
     }
