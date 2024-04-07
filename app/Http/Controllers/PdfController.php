@@ -22,6 +22,7 @@ class PdfController extends Controller
         $usn = $request->query('usn');
         $student_details = Student::where('student_id', $usn)
             ->first();
+        $mentor_details = DB::select("SELECT * FROM teachers WHERE emp_id = (SELECT mentor_id FROM mentorship WHERE mentee_id = ?)", [$usn]);
 
 
 
@@ -34,6 +35,7 @@ class PdfController extends Controller
 
             $data = [
                 'student_details' => $student_details,
+                'mentor_details' => $mentor_details,
                 'feedbacks' => $feedbacks,
                 'sem1_attendance' => $sem1_attendance,
                 'sem1_subjects' => $sem1_subjects,
@@ -52,6 +54,7 @@ class PdfController extends Controller
 
             $data = [
                 'student_details' => $student_details,
+                'mentor_details' => $mentor_details,
                 'feedbacks' => $feedbacks,
                 'sem1_attendance' => $sem1_attendance,
                 'sem2_attendance' => $sem2_attendance,
@@ -76,6 +79,7 @@ class PdfController extends Controller
 
             $data = [
                 'student_details' => $student_details,
+                'mentor_details' => $mentor_details,
                 'feedbacks' => $feedbacks,
                 'sem1_attendance' => $sem1_attendance,
                 'sem2_attendance' => $sem2_attendance,
@@ -106,6 +110,7 @@ class PdfController extends Controller
 
             $data = [
                 'student_details' => $student_details,
+                'mentor_details' => $mentor_details,
                 'feedbacks' => $feedbacks,
                 'sem1_attendance' => $sem1_attendance,
                 'sem2_attendance' => $sem2_attendance,
@@ -122,8 +127,8 @@ class PdfController extends Controller
             ];
         }
 
-        $pdf = Pdf::loadView('pdf/generate-pdf', $data);
-        return $pdf->download("Download.pdf");
-        // return view('pdf/generate-pdf', $data);
+        // $pdf = Pdf::loadView('pdf/generate-pdf', $data);
+        // return $pdf->download("Download.pdf");
+        return view('pdf/generate-pdf', $data);
     }
 }

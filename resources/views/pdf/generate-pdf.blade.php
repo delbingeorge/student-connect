@@ -51,13 +51,13 @@
                     <div class="w-2/4 flex border">
                         <div class="table-cell font-medium border-gray-300 p-2">Proctor:</div>
                         <div class="table-cell ml-8 font-semibold border-gray-300 p-2">
-                            {{-- {{ $student_details->contact }} --}}
+                            {{ $mentor_details[0]->fullname }}
                         </div>
                     </div>
                     <div class="border w-2/4">
                         <div class="table-cell font-medium  border-gray-300 p-2">Designation:</div>
                         <div class="table-cell  font-semibold  border-gray-300 p-2">
-                            {{-- {{ $student_details->email }} --}}
+                            {{ $mentor_details[0]->designation }}
                         </div>
                     </div>
                 </div>
