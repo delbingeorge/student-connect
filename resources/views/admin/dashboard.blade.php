@@ -61,17 +61,19 @@
                 </div>
             </div>
             <div class="">
-                <div class="grid grid-cols-4 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
+                <div class="grid grid-cols-5 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
                     <h1 class="text-lg font-medium">Emp ID</h1>
                     <h1 class="text-lg font-medium">Faculty Name</h1>
+                    <h1 class="text-lg font-medium">Email</h1>
                     <h1 class="text-lg font-medium">Contact</h1>
                     <h1 class="text-lg font-medium">Actions</h1>
                 </div>
                 @foreach ($teachers as $teacher)
-                <div class="grid grid-cols-4 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
+                <div class="grid grid-cols-5 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
                     <h1 class="text-lg">{{ $teacher->emp_id }}</h1>
                     <h1 class="text-lg">{{ $teacher->fullname }}</h1>
-                    <h1 class="text-lg">{{ $teacher->contact }}</h1>
+                    <h1 class="text-lg"><a href="mailto:{{ $teacher->email }}">{{ $teacher->email }}</a></h1>
+                    <h1 class="text-lg"><a href="tel:{{ $teacher->contact }}">{{ $teacher->contact }}</a></h1>
                     <a href="{{ route('edit-faculty', ['teacher_id' => $teacher->emp_id]) }}">
                         <div>
                             edit

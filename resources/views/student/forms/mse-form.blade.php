@@ -18,25 +18,17 @@
     </head>
 
     <body class="font-poppy">
-        <div class="relative px-0 lg:px-12">
-            <nav class="w-full flex items-center justify-between px-4 lg:px-0 py-4">
-                <div class="-space-y-3">
-                    <a href="{{ route('student_dashboard') }}"
-                        class="flex items-center justify-center space-x-2 text-2xl font-medium">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z" />
-                        </svg>
-                        <span>
-                            MSE {{ session('pending_mse_number') }}
-                        </span>
-                    </a>
-                </div>
-            </nav>
-        </div>
+        <a href="{{ route('student_dashboard') }}" class="flex items-end justify-start space-x-2 text-2xl font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z" />
+            </svg>
+            <span>Profile</span>
+        </a>
         <div class="flex items-center justify-center flex-col">
             <form class="px-0 lg:px-12 space-y-8 py-8 bg-white lg:bg-secondary w-full lg:w-3/4"
                 action="{{ route('submit-mse-marks') }}" method="post">
                 @csrf
+                <h1 class="text-3xl font-semibold">MSE {{ session('pending_mse_number') }}</h1>
                 <div class="container mx-auto">
                     <table class="min-w-full bg-white border border-gray-300">
                         <thead>
@@ -65,8 +57,8 @@
                             @endforeach
                             @else
                             @php
-                            header('Location: /student_dashboard');
-                            exit();
+    header('Location: /student_dashboard');
+    exit();
                             @endphp
                             @endif
                         </tbody>

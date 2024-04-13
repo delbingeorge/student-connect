@@ -58,6 +58,7 @@
             </div>
             <div class="space-y-4">
                 <h1 class="font-semibold tracking-widest text-black/70">INTERESTS & SKILLS</h1>
+                <h1 class="font-semibold tracking-widest text-black/70 text-xs">(Example : Skill1, Skill2, ...)</h1>
                 <div class="flex flex-wrap gap-2">
                     <input type="text" name="skills" class="py-3 px-2 w-full rounded-lg bg-dark/10"
                         placeholder="Enter your skills (Example : Skill1, Skill2, ...)"
@@ -66,8 +67,9 @@
             </div>
             <div class="space-y-4">
                 <h1 class="font-semibold tracking-widest text-black/70">PROJECTS</h1>
+                <h1 class="font-semibold tracking-widest text-black/70 text-xs">(project1, project2, ....)</h1>
                 <input type="text" name="projects" class="py-3 px-2 w-full rounded-lg bg-dark/10"
-                    placeholder="Add new project here!"
+                    placeholder="Enter your projects (Example : project1, project2, ....)"
                     value="{{ $data->projects }}" required>
             </div>
             <div class="space-x-4 w-full flex items-end justify-end">

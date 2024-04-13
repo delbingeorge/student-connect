@@ -77,7 +77,7 @@ Route::get('student-first-mse-form', function () {
         $studentName = session('studentName');
         $semester = session('current_semester');
         $subjects = session('subjects');
-        return view('student/forms/mse-one-form')->with(compact('subjects', 'studentName', 'semester'));
+        return view('student/forms/mse-form')->with(compact('subjects', 'studentName', 'semester'));
     } else {
         return redirect('/');
     }
@@ -159,7 +159,6 @@ Route::get('/profile', function () {
 
 
 /*******************************Student Features************************************/
-
 Route::get('/student-profile', function () {
     if (Session::has('user_id') && Session::get('role') == "student") {
         $data = Student::where('student_id', session('user_id'))->first();

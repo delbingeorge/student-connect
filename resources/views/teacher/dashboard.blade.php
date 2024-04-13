@@ -118,8 +118,8 @@
                     <h1 class="text-lg">{{ $student->student_id }}</h1>
                     <h1 class="text-lg">{{ $student->fullname }}</h1>
                     <h1 class="text-lg">{{ $student->semester }}</h1>
-                    <h1 class="text-lg">{{ $student->email }}</h1>
-                    <h1 class="text-lg">{{ $student->contact }}</h1>
+                    <h1 class="text-lg"><a href="mailto:{{ $student->email }}">{{ $student->email }}</a></h1>
+                    <h1 class="text-lg"><a href="tel:{{ $student->contact }}">{{ $student->contact }}</a></h1>
                     <!-- <a href="route('edit-student', ['student_id' => $student->student_id])">
                     <div>
                         {{-- <x-feathericon-edit class="w-5 h-5" /> --}}
