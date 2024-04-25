@@ -69,7 +69,6 @@ Route::get('student-feedback-form', function () {
 
 Route::post('/submit-feedback-form', [StudentController::class, 'submit_feedback_Form'])->name('submit-feedback-form');
 
-
 /******************************MSE Marks From*************************************/
 Route::get('/redirect-first-mse-form', [StudentController::class, 'mse_form'])->name('first-mse-form');
 Route::get('student-first-mse-form', function () {
@@ -108,8 +107,8 @@ Route::post('/admin_login', [LoginController::class, 'admin_login'])->name('admi
 Route::post('/add_faculty', [AdminController::class, 'addFaculty'])->name('add_faculty');
 Route::post('/edit_faculty', [AdminController::class, 'editFaculty'])->name('edit_faculty');
 Route::get('/increment_semester', [AdminController::class, 'incrementSemester'])->name('increment_semester');
-Route::get('/activate_feedback_form', [AdminController::class, 'activateFeedbackForm'])->name('activate_feedback_form');
-
+Route::get('/activate-feedback-form', [AdminController::class, 'activateFeedbackForm'])->name('activate_feedback_form');
+Route::get('/activate-mse-form', [AdminController::class, 'activateMSE'])->name('activate_mse_form');
 
 Route::get('/add-faculty', function () {
     if (Session::has('user_id') && Session::get('role') == "admin") {
@@ -164,7 +163,7 @@ Route::get('/profile', function () {
 Route::get('/student-profile', function () {
     if (Session::has('user_id') && Session::get('role') == "student") {
         $data = Student::where('student_id', session('user_id'))->first();
-        return view('student/studentprofile',compact('data'));
+        return view('student/studentprofile', compact('data'));
     } else {
         return redirect('/');
     }

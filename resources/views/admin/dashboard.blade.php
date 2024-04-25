@@ -62,7 +62,19 @@
                     <div
                         class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
-                        <span class="text-xl">Next Semester</span>
+                        <span class="text-xl">Activate Feedback Form</span>
+                    </div>
+                </a>
+            </div>
+            <div class="flex items-center justify-between mb-6 bg-secondary py-4 px-2 rounded-lg">
+                <h1 class="text-2xl font-medium">
+                    Activate MSE Form
+                </h1>
+                <a href="{{ route('activate_mse_form') }}">
+                    <div
+                        class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
+                        {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
+                        <span class="text-xl">Activate MSE Form</span>
                     </div>
                 </a>
             </div>

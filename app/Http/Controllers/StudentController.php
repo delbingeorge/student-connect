@@ -128,6 +128,11 @@ class StudentController extends Controller
         $feedbackForm->field13 = $request->input('field13');
         $feedbackForm->save();
 
+        $student = Student::where('student_id', session("user_id"))->first();
+        $student->feedback_filled = "true";
+        session(['feedback_filled' => $student->feedback_filled]);
+        $student->save();
+
         $sem = Session::get('current_semester');
         $subjects = Subject::where('semester_number', $sem)->get();
         if ($sem == 1) {
@@ -278,6 +283,12 @@ class StudentController extends Controller
         //     $sem_3_mse->save();
         // }
         // Redirect back with success message or to another page
+
+        $student = Student::where('student_id', session("user_id"))->first();
+        $student->mse_filled = "true";
+        session(['mse_filled' => $student->mse_filled]);
+        $student->save();
+
         return redirect()->back()->with('success', 'MSE marks submitted successfully!');
     }
 

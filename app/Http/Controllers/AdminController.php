@@ -89,10 +89,19 @@ class AdminController extends Controller
     public function activateFeedbackForm(Request $request)
     {
         try {
-            Student::increment('semester');
-            return redirect()->route('admin.dashboard')->with('success', 'Semester updated successfully.');
+            Student::query()->update(['feedback_filled' => "false"]);
+            return redirect()->route('admin.dashboard')->with('success', 'Feedback form activated for all students.');
         } catch (QueryException $exception) {
-            return redirect()->route('admin.dashboard')->with('message', 'An unexpected error occurred.');
+            return redirect()->route('admin.dashboard')->with('error', 'An unexpected error occurred.');
+        }
+    }
+    public function activateMSE(Request $request)
+    {
+        try {
+            Student::query()->update(['mse_filled' => "false"]);
+            return redirect()->route('admin.dashboard')->with('success', 'MSE marks form activated for all students.');
+        } catch (QueryException $exception) {
+            return redirect()->route('admin.dashboard')->with('error', 'An unexpected error occurred.');
         }
     }
 }
