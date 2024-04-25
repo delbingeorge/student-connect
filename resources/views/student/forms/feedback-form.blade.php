@@ -129,7 +129,7 @@
                                     <span class="text-xl font-medium">{{ $subject->subject_name }} :</span>
                                     <input type="text" name="{{ $subject->subject_code }}"
                                         class="border-[3px] text-xl font-semibold w-16 h-16 text-center rounded-xl"
-                                        placeholder="00""
+                                        placeholder="00"
                                         id="{{ $subject->subject_code }}">
                                 </div>
                             @endforeach

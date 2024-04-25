@@ -121,7 +121,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem1_attendance[$i]->{$subject->subject_code}!=null)
+                                            @if($sem1_attendance[$i]->{$subject->subject_code}!=null && $sem1_attendance[$i]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem1_attendance[$i]->{$subject->subject_code} }}%
                                                 </div>
@@ -146,7 +146,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem2_attendance[$j]->{$subject->subject_code}!=null)
+                                            @if($sem2_attendance[$j]->{$subject->subject_code}!=null && $sem2_attendance[$j]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem2_attendance[$j]->{$subject->subject_code} }}%
                                                 </div>
@@ -171,7 +171,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem3_attendance[$k]->{$subject->subject_code}!=null)
+                                            @if($sem3_attendance[$k]->{$subject->subject_code}!=null && $sem3_attendance[$k]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem3_attendance[$k]->{$subject->subject_code} }}%
                                                 </div>
@@ -196,7 +196,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem4_attendance[$l]->{$subject->subject_code}!=null)
+                                            @if($sem4_attendance[$l]->{$subject->subject_code}!=null && $sem4_attendance[$l]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem4_attendance[$l]->{$subject->subject_code} }}%
                                                 </div>
@@ -255,7 +255,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem1_mse[$m]->{$subject->subject_code}!=null)
+                                            @if($sem1_mse[$m]->{$subject->subject_code}!=null && $sem1_mse[$m]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem1_mse[$m]->{$subject->subject_code} }}%
                                                 </div>
@@ -284,7 +284,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem2_mse[$n]->{$subject->subject_code}!=null)
+                                            @if($sem2_mse[$n]->{$subject->subject_code}!=null && $sem2_mse[$n]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem2_mse[$n]->{$subject->subject_code} }}%
                                                 </div>
@@ -313,7 +313,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem3_mse[$o]->{$subject->subject_code}!=null)
+                                            @if($sem3_mse[$o]->{$subject->subject_code}!=null && $sem3_mse[$o]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem3_mse[$o]->{$subject->subject_code} }}%
                                                 </div>
@@ -342,7 +342,7 @@
                                         <div class="table-row">
                                             <div class="table-cell font-medium border border-gray-300 p-2">
                                                 {{ $subject->subject_name }}</div>
-                                            @if($sem4_mse[$p]->{$subject->subject_code}!=null)
+                                            @if($sem4_mse[$p]->{$subject->subject_code}!=null && $sem4_mse[$p]->{$subject->subject_code}!="null")
                                                 <div class="table-cell border border-gray-300 p-2">
                                                     {{ $sem4_mse[$p]->{$subject->subject_code} }}%
                                                 </div>
