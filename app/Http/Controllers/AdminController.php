@@ -86,4 +86,13 @@ class AdminController extends Controller
             return redirect()->route('admin.dashboard')->with('message', 'An error occurred while updating the semester.');
         }
     }
+    public function activateFeedbackForm(Request $request)
+    {
+        try {
+            Student::increment('semester');
+            return redirect()->route('admin.dashboard')->with('success', 'Semester updated successfully.');
+        } catch (QueryException $exception) {
+            return redirect()->route('admin.dashboard')->with('message', 'An unexpected error occurred.');
+        }
+    }
 }

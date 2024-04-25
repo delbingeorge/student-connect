@@ -29,7 +29,7 @@ class LoginController extends Controller
                     ->select('teachers.*')
                     ->first();
 
-                session(['user_id' => $student->student_id, 'role' => $user->role, 'student_name' => $student->fullname, 'contact' => $student->contact, 'email' => $credentials['email'], 'current_semester' => $student->semester, 'mentor_name' => $mentor_details->fullname, 'designation' => $mentor_details->designation]);
+                session(['user_id' => $student->student_id, 'role' => $user->role, 'student_name' => $student->fullname, 'contact' => $student->contact, 'email' => $credentials['email'], 'current_semester' => $student->semester, 'feedback_filled' => $student->feedback_filled, 'mentor_name' => $mentor_details->fullname, 'designation' => $mentor_details->designation]);
                 $formNumber = FeedbackForm::where('student_id', session('user_id'))
                     ->where('semester', session('current_semester'))
                     ->select('form_number')

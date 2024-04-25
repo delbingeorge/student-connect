@@ -44,8 +44,8 @@
                     <h1 class="font-medium text-xl group-hover:text-dark/80">Complete your profile!</h1>
                 </a> -->
                 <a href="{{ route('feedback-form') }}"
-                    class="flex items-center justify-start cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300">
-
+                    class="flex items-center justify-start cursor-pointer group bg-secondary space-x-4 px-6 py-7 rounded-lg duration-300"
+                    style="{{ session('feedback_filled')?'pointer-events:none; opacity:0.6':'' }}">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         class="w-7 h-7 group-hover:rotate-[30deg] group-hover:text-[#ffd000] duration-300"
                         viewBox="0 0 512 512">
