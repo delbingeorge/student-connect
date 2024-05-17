@@ -22,9 +22,9 @@
                 <a href="{{ route('logout') }}"
                     class="text-primary hover:bg-secondary border-2 group hover:bg-primary/20 duration-200 cursor-pointer flex items-center justify-center rounded-full py-3 px-3 space-x-1">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:translate-x-1 duration-300"
-                    viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                        d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h7v2H5v14h7v2zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5z" />
+                        viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h7v2H5v14h7v2zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5z" />
                     </svg>
                 </a>
             </div>
@@ -93,49 +93,53 @@
                     <h1 class="text-lg font-medium">Actions</h1>
                 </div>
                 @foreach ($teachers as $teacher)
-                <div class="grid grid-cols-5 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
-                    <h1 class="text-lg">{{ $teacher->emp_id }}</h1>
-                    <h1 class="text-lg">{{ $teacher->fullname }}</h1>
-                    <h1 class="text-lg"><a href="mailto:{{ $teacher->email }}">{{ $teacher->email }}</a></h1>
-                    <h1 class="text-lg"><a href="tel:{{ $teacher->contact }}">{{ $teacher->contact }}</a></h1>
-                    <a href="{{ route('edit-faculty', ['teacher_id' => $teacher->emp_id]) }}">
-                        <div>
-                            edit
-                        </div>
-                    </a>
-                    <a href="{{ route('delete_faculty', ['teacher_id' => $teacher->emp_id]) }}">
-                        <div>
-                            delete
-                        </div>
-                    </a>
-                </div>
+                    <div class="grid grid-cols-5 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
+                        <h1 class="text-lg">{{ $teacher->emp_id }}</h1>
+                        <h1 class="text-lg">{{ $teacher->fullname }}</h1>
+                        <h1 class="text-lg"><a href="mailto:{{ $teacher->email }}">{{ $teacher->email }}</a></h1>
+                        <h1 class="text-lg"><a href="tel:{{ $teacher->contact }}">{{ $teacher->contact }}</a></h1>
+                        <a href="{{ route('edit-faculty', ['teacher_id' => $teacher->emp_id]) }}">
+                            <div>
+                                edit
+                            </div>
+                        </a>
+                        <form action="{{ route('delete_faculty') }}" method="post" onsubmit="return confirmDelete()">
+                            @csrf
+                            <input type="hidden" name="teacher_id" value="{{ $teacher->emp_id }}">
+                            <input type="submit" value="delete">
+                        </form>
+                    </div>
                 @endforeach
             </div>
         </div>
         <div>
             @if (session('success'))
-            <div id="message" class="absolute z-40 bg-green-500 rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
-                <div class="flex items-center justify-center space-x-2 text-white">
-                    {{-- <x-heroicon-o-user class="w-5 h-5" /> --}}
-                    <h1 class="">
-                        {{ session('success') }}
-                    </h1>
+                <div id="message" class="absolute z-40 bg-green-500 rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
+                    <div class="flex items-center justify-center space-x-2 text-white">
+                        {{-- <x-heroicon-o-user class="w-5 h-5" /> --}}
+                        <h1 class="">
+                            {{ session('success') }}
+                        </h1>
+                    </div>
                 </div>
-            </div>
             @endif
             @if (session('error'))
-            <div id="message" class="absolute z-40 bg-red-100 rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
-                <div class="flex items-center justify-center space-x-2 text-red-500">
-                    {{-- <x-heroicon-o-user class="w-5 h-5" /> --}}
-                    <h1 class="">
-                        {{ session('error') }}
-                    </h1>
+                <div id="message" class="absolute z-40 bg-red-100 rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
+                    <div class="flex items-center justify-center space-x-2 text-red-500">
+                        {{-- <x-heroicon-o-user class="w-5 h-5" /> --}}
+                        <h1 class="">
+                            {{ session('error') }}
+                        </h1>
+                    </div>
                 </div>
-            </div>
             @endif
         </div>
     </div>
     <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this faculty member?');
+        }
+
         setTimeout(function () {
             document.getElementById('message').style.display = 'none';
         }, 5000);

@@ -106,7 +106,7 @@ Route::get('/admin', function () {
 Route::post('/admin_login', [LoginController::class, 'admin_login'])->name('admin_login');
 Route::post('/add_faculty', [AdminController::class, 'addFaculty'])->name('add_faculty');
 Route::post('/edit_faculty', [AdminController::class, 'editFaculty'])->name('edit_faculty');
-Route::get('/delete_faculty/{teacher_id}', [AdminController::class, 'deleteFaculty'])->name('delete_faculty');
+Route::post('/delete_faculty', [AdminController::class, 'deleteFaculty'])->name('delete_faculty');
 Route::get('/increment_semester', [AdminController::class, 'incrementSemester'])->name('increment_semester');
 Route::get('/activate-feedback-form', [AdminController::class, 'activateFeedbackForm'])->name('activate_feedback_form');
 Route::get('/activate-mse-form', [AdminController::class, 'activateMSE'])->name('activate_mse_form');
@@ -127,7 +127,6 @@ Route::get('/edit-faculty/{teacher_id}', function ($teacher_id) {
         return redirect('admin');
     }
 })->name('edit-faculty');
-
 
 
 

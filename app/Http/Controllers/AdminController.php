@@ -77,8 +77,27 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteFaculty(Request $request){
+    public function deleteFaculty(Request $request)
+    {
+        if (!Session::has('user_id') || Session::get('role') != "admin")
+            return redirect('admin');
         
+        $request->validate([
+            'teacher_id' => 'required',
+        ]);
+
+        try {
+            $teacher = Teacher::where('emp_id', $request->teacher_id)->first();
+            $teacher->delete();
+
+            $user=User::where('user_id', $request->teacher_id)->first();
+            $user->delete();
+
+            return redirect()->route('admin.dashboard')->with('success', 'Faculty deleted successfully.');
+        } catch (QueryException $exception) {
+            return redirect()->route('admin.dashboard')->with('message', 'An error occurred while deleting faculty.');
+        }
+
     }
 
     public function incrementSemester(Request $request)
