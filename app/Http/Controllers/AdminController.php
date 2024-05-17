@@ -77,6 +77,10 @@ class AdminController extends Controller
         }
     }
 
+    public function deleteFaculty(Request $request){
+        
+    }
+
     public function incrementSemester(Request $request)
     {
         try {

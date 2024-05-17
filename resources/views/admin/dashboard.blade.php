@@ -103,6 +103,11 @@
                             edit
                         </div>
                     </a>
+                    <a href="{{ route('delete_faculty', ['teacher_id' => $teacher->emp_id]) }}">
+                        <div>
+                            delete
+                        </div>
+                    </a>
                 </div>
                 @endforeach
             </div>
