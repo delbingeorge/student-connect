@@ -141,6 +141,7 @@ Route::get('/view-mentees/{teacher_id}', function ($teacher_id) {
 
 /******************************Faculty Features*************************************/
 Route::post('/add_student', [FacultyController::class, 'addStudent'])->name('add_student');
+Route::post('/delete_student', [FacultyController::class, 'deleteStudent'])->name('delete_student');
 
 Route::get('/add-student', function () {
     if (Session::has('user_id') && (Session::get('role') == "teacher" || Session::get('role') == "hod")) {

@@ -61,6 +61,31 @@ class FacultyController extends Controller
         }
     }
 
+    public function deleteStudent(Request $request)
+    {
+        if(!Session::has('user_id') || Session::get('role') == "student")
+            return redirect('/');
+        
+        $request->validate([
+            'student_id' => 'required',
+        ]);
+
+        try {
+            $student = Student::where('student_id', $request->student_id)->first();
+            $student->delete();
+
+            DB::select("DELETE FROM mentorshiP WHERE mentee_id = ? AND mentor_id = ?",[$request->student_id,session('user_id')]);
+
+            $user=User::where('user_id', $request->student_id)->first();
+            $user->delete();
+
+            return redirect()->route('teacher.dashboard')->with('success', 'Student removed successfully.');
+        } catch (QueryException $exception) {
+            return redirect()->route('teacher.dashboard')->with('message', 'An error occurred while deleting student.');
+        }
+
+    }
+
     public function search(Request $request)
     {
         if(!Session::has('user_id') || Session::get('role') == "student")
