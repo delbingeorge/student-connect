@@ -128,6 +128,15 @@ Route::get('/edit-faculty/{teacher_id}', function ($teacher_id) {
     }
 })->name('edit-faculty');
 
+Route::get('/view-mentees/{teacher_id}', function ($teacher_id) {
+    if (Session::has('user_id') && Session::get('role') == "admin") {
+        $students = DB::select("SELECT * FROM students WHERE student_id IN (SELECT mentee_id FROM mentorship WHERE mentor_id = ?)", [$teacher_id]);
+        return view('admin.view-mentees', compact('students'));
+    } else {
+        return redirect('admin');
+    }
+})->name('view-mentees');
+
 
 
 /******************************Faculty Features*************************************/

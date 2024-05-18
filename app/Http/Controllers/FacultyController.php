@@ -95,5 +95,14 @@ class FacultyController extends Controller
                 return redirect()->route('view-faculties');
             }
         }
+        if ($role == 'admin') {
+            if (isset($id)) {
+                $teachers = Teacher::where('emp_id', $id)->get();
+                return view('admin.dashboard', compact('teachers'));
+            } else {
+                return redirect()->route('admin.dashboard');
+            }
+        }
+
     }
 }
