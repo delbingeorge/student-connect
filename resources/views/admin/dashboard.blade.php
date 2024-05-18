@@ -154,7 +154,7 @@
         </div>
         <script>
             function confirmDelete() {
-                return confirm('Delete this faculty member?');
+                return confirm('Delete this faculty member? \nMentees under this faculty will also be removed?');
             }
 
             function confirmAction() {
