@@ -84,8 +84,8 @@
                     <h1 class="text-xl font-medium">All Facutlies</h1>
                     <div class="flex items-center gap-6">
                         <form method="get" action="{{ route('view-by-semester') }}">
-                            <input class="text-black border-2 rounded-md border-black p-2" type="search" name="id"
-                                id="" placeholder="Search Faculty by ID">
+                            <input class="text-black border-2 rounded-md border-black p-2" type="search" name="id" id=""
+                                placeholder="Search Faculty by ID">
                             <input class="text-black border-2 rounded-md bg-slate-300 border-black p-2" type="submit"
                                 value="Search">
                             <input type="hidden" name="role" value="admin">
@@ -128,11 +128,9 @@
                                     @csrf
                                     <input type="hidden" name="teacher_id" value="{{ $teacher->emp_id }}">
                                     <button type="submit" class="hover:cursor-pointer" value="delete">
-                                        <svg width='24' viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                        <svg width='24' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
                                             </g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <path d="M20.5001 6H3.5" stroke="#000000" stroke-width="1.5"
@@ -153,9 +151,9 @@
 
                                     </button>
                                 </form>
-                                <a href="{{ route('view-mentees', ['teacher_id' => $teacher->emp_id]) }}">
-                                    <svg width='23' viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                <a
+                                    href="{{ route('view-mentees', ['teacher_id' => $teacher->emp_id, 'teacher_name' => $teacher->fullname]) }}">
+                                    <svg width='23' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
                                         </g>
@@ -204,7 +202,7 @@
                 return confirm('Are you sure? This action cannot be undone.');
             }
 
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('message').style.display = 'none';
             }, 5000);
 
@@ -215,7 +213,7 @@
                 document.getElementById('semesterSelect').value = semesterParam;
             }
 
-            document.getElementById('semesterSelect').addEventListener('change', function() {
+            document.getElementById('semesterSelect').addEventListener('change', function () {
                 document.getElementById('semesterForm').submit();
             });
         </script>
