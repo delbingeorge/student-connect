@@ -83,7 +83,7 @@ class AdminController extends Controller
     {
         if (!Session::has('user_id') || Session::get('role') != "admin")
             return redirect('admin');
-        
+
         $request->validate([
             'teacher_id' => 'required',
         ]);
@@ -92,16 +92,16 @@ class AdminController extends Controller
             $teacher = Teacher::where('emp_id', $request->teacher_id)->first();
             $teacher->delete();
 
-            DB::select("DELETE FROM students WHERE student_id in (SELECT mentee_id FROM mentorship where mentor_id = ?)",[$request->teacher_id]);
-            
-            DB::select("DELETE FROM users WHERE user_id in (SELECT mentee_id FROM mentorship where mentor_id = ?)",[$request->teacher_id]);
+            DB::select("DELETE FROM students WHERE student_id in (SELECT mentee_id FROM mentorship where mentor_id = ?)", [$request->teacher_id]);
 
-            DB::select("DELETE FROM mentorship WHERE mentor_id = ?",[$request->teacher_id]);
+            DB::select("DELETE FROM users WHERE user_id in (SELECT mentee_id FROM mentorship where mentor_id = ?)", [$request->teacher_id]);
 
-            $user=User::where('user_id', $request->teacher_id)->first();
+            DB::select("DELETE FROM mentorship WHERE mentor_id = ?", [$request->teacher_id]);
+
+            $user = User::where('user_id', $request->teacher_id)->first();
             $user->delete();
 
-            
+
 
             return redirect()->route('admin.dashboard')->with('success', 'Faculty deleted successfully.');
         } catch (QueryException $exception) {
@@ -114,6 +114,8 @@ class AdminController extends Controller
     {
         try {
             Student::increment('semester');
+            Student::query()->update(['feedback_filled' => "true"]);
+            Student::query()->update(['mse_filled' => "true"]);
             return redirect()->route('admin.dashboard')->with('success', 'Semester updated successfully.');
         } catch (QueryException $exception) {
             return redirect()->route('admin.dashboard')->with('message', 'An error occurred while updating the semester.');

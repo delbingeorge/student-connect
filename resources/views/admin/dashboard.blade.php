@@ -32,7 +32,7 @@
         <div class="px-12 py-8">
             <div class="flex items-center justify-between mb-6 bg-secondary py-4 px-2 rounded-lg">
                 <h1 class="text-2xl font-medium">
-                    Add Facutlies
+                    Add new facutly
                 </h1>
                 <a href="{{ route('add-faculty') }}">
                     <div
@@ -43,9 +43,12 @@
                 </a>
             </div>
             <div class="flex items-center justify-between mb-6 bg-secondary py-4 px-2 rounded-lg">
-                <h1 class="text-2xl font-medium">
-                    Increment student semester
-                </h1>
+                <div class="flex-col items-center justify-start">
+                    <h1 class="text-2xl font-medium">
+                        Go to next semester
+                    </h1>
+                    <h6 class="text-xs font-medium text-red-700">*please confirm before proceeding</h6>
+                </div>
                 <a href="{{ route('increment_semester') }}" onclick="return confirmAction()">
                     <div
                         class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
@@ -55,9 +58,12 @@
                 </a>
             </div>
             <div class="flex items-center justify-between mb-6 bg-secondary py-4 px-2 rounded-lg">
-                <h1 class="text-2xl font-medium">
-                    Activate Feedback Form
-                </h1>
+                <div class="flex-col items-center justify-start">
+                    <h1 class="text-2xl font-medium">
+                        Activate Feedback Form
+                    </h1>
+                    <h6 class="text-xs font-medium text-red-700">*please confirm before proceeding</h6>
+                </div>
                 <a href="{{ route('activate_feedback_form') }}" onclick="return confirmAction()">
                     <div
                         class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
@@ -67,9 +73,12 @@
                 </a>
             </div>
             <div class="flex items-center justify-between mb-6 bg-secondary py-4 px-2 rounded-lg">
-                <h1 class="text-2xl font-medium">
-                    Activate MSE Form
-                </h1>
+                <div class="flex-col items-center justify-start">
+                    <h1 class="text-2xl font-medium">
+                        Activate MSE Form
+                    </h1>
+                    <h6 class="text-xs font-medium text-red-700">*please confirm before proceeding</h6>
+                </div>
                 <a href="{{ route('activate_mse_form') }}" onclick="return confirmAction()">
                     <div
                         class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">

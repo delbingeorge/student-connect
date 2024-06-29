@@ -277,7 +277,7 @@
 
                         @if ($feedback->semester == 2 && $n < 2)
                             <div class="table w-full m-8">
-                                <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$n]->mse_number }} Performance
+                                <h3 class="font-semibold text-lg mt-2">MSE {{ $sem2_mse[$n]->mse_number }} Performance
                                 </h3>
                                 @isset($sem2_subjects)
                                     @foreach ($sem2_subjects as $subject)
@@ -306,7 +306,7 @@
 
                         @if ($feedback->semester == 3 && $o < 2)
                             <div class="table w-full m-8">
-                                <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$o]->mse_number }} Performance
+                                <h3 class="font-semibold text-lg mt-2">MSE {{ $sem3_mse[$o]->mse_number }} Performance
                                 </h3>
                                 @isset($sem3_subjects)
                                     @foreach ($sem3_subjects as $subject)
@@ -335,7 +335,7 @@
 
                         @if ($feedback->semester == 4 && $p < 2)
                             <div class="table w-full m-8">
-                                <h3 class="font-semibold text-lg mt-2">MSE {{ $sem1_mse[$p]->mse_number }} Performance
+                                <h3 class="font-semibold text-lg mt-2">MSE {{ $sem4_mse[$p]->mse_number }} Performance
                                 </h3>
                                 @isset($sem4_subjects)
                                     @foreach ($sem4_subjects as $subject)

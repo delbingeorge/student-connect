@@ -59,6 +59,7 @@ class StudentController extends Controller
             ->where('semester', session('current_semester'))
             ->select('form_number')
             ->get();
+
         if ($formNumber->isNotEmpty()) {
             $maxFormNumber = $formNumber->max('form_number');
             if ($maxFormNumber == 3) {
@@ -75,7 +76,6 @@ class StudentController extends Controller
         }
 
         if ($subjects->isEmpty()) {
-            dd($sem);
             return redirect()->route('student_dashboard');
         }
         // Pass student name to the view
@@ -141,7 +141,7 @@ class StudentController extends Controller
             $sem_1_attendance->student_id = session('user_id');
             foreach ($subjects as $subject) {
                 $subjectCode = $subject->subject_code;
-                $sem_1_attendance->$subjectCode = $request->input($subjectCode)!=null?$request->input($subjectCode):"null";
+                $sem_1_attendance->$subjectCode = $request->input($subjectCode) != null ? $request->input($subjectCode) : "null";
             }
             $sem_1_attendance->save();
         }
@@ -151,7 +151,7 @@ class StudentController extends Controller
             $sem_2_attendance->student_id = session('user_id');
             foreach ($subjects as $subject) {
                 $subjectCode = $subject->subject_code;
-                $sem_2_attendance->$subjectCode = $request->input($subjectCode)!=null?$request->input($subjectCode):"null";
+                $sem_2_attendance->$subjectCode = $request->input($subjectCode) != null ? $request->input($subjectCode) : "null";
             }
             $sem_2_attendance->save();
         }
@@ -224,7 +224,6 @@ class StudentController extends Controller
         }
 
         if ($subjects->isEmpty()) {
-            dd($sem);
             return redirect()->route('student_dashboard');
         }
         // Pass student name to the view
@@ -248,7 +247,7 @@ class StudentController extends Controller
             $sem_1_mse->student_id = session('user_id');
             foreach ($subjects as $subject) {
                 $subjectCode = $subject->subject_code;
-                $sem_1_mse->$subjectCode = $request->input($subjectCode)!=null?$request->input($subjectCode):"null";
+                $sem_1_mse->$subjectCode = $request->input($subjectCode) != null ? $request->input($subjectCode) : "null";
             }
             $sem_1_mse->save();
         }
@@ -258,7 +257,7 @@ class StudentController extends Controller
             $sem_2_mse->student_id = session('user_id');
             foreach ($subjects as $subject) {
                 $subjectCode = $subject->subject_code;
-                $sem_2_mse->$subjectCode = $request->input($subjectCode)!=null?$request->input($subjectCode):"null";
+                $sem_2_mse->$subjectCode = $request->input($subjectCode) != null ? $request->input($subjectCode) : "null";
             }
             $sem_2_mse->save();
         }

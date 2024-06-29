@@ -18,6 +18,8 @@ class CreateStudentsTable extends Migration
             $table->string('about')->nullable();
             $table->string('skills')->nullable();
             $table->string('projects')->nullable();
+            $table->boolean('feedback_filled')->default(true);
+            $table->boolean('mse_filled')->default(true);
 
             $table->foreign('student_id')->references('user_id')->on('users');
             $table->foreign('semester')->references('semester_number')->on('semesters');
