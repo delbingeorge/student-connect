@@ -36,7 +36,7 @@
                 </h1>
                 <a href="{{ route('add-faculty') }}">
                     <div
-                        class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
+                        class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
                         <span class="text-xl">Add</span>
                     </div>
@@ -48,7 +48,7 @@
                 </h1>
                 <a href="{{ route('increment_semester') }}" onclick="return confirmAction()">
                     <div
-                        class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
+                        class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
                         <span class="text-xl">Next Semester</span>
                     </div>
@@ -60,7 +60,7 @@
                 </h1>
                 <a href="{{ route('activate_feedback_form') }}" onclick="return confirmAction()">
                     <div
-                        class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
+                        class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
                         <span class="text-xl">Activate Feedback Form</span>
                     </div>
@@ -72,7 +72,7 @@
                 </h1>
                 <a href="{{ route('activate_mse_form') }}" onclick="return confirmAction()">
                     <div
-                        class="flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-400 duration-300 py-2 px-12">
+                        class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
                         <span class="text-xl">Activate MSE Form</span>
                     </div>
@@ -131,7 +131,7 @@
             </div>
             <div>
                 @if (session('success'))
-                    <div id="message" class="absolute z-40 bg-green-500 rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
+                    <div id="message" class="absolute z-40 bg-primary rounded-xl pr-24 pl-5 py-3 bottom-0 right-0">
                         <div class="flex items-center justify-center space-x-2 text-white">
                             {{-- <x-heroicon-o-user class="w-5 h-5" /> --}}
                             <h1 class="">
