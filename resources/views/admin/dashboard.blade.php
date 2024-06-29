@@ -84,8 +84,8 @@
                     <h1 class="text-xl font-medium">All Facutlies</h1>
                     <div class="flex items-center gap-6">
                         <form method="get" action="{{ route('view-by-semester') }}">
-                            <input class="text-black border-2 rounded-md border-black p-2" type="search" name="id" id=""
-                                placeholder="Search Faculty by ID">
+                            <input class="text-black border-2 rounded-md border-black p-2" type="search" name="id"
+                                id="" placeholder="Search Faculty by ID">
                             <input class="text-black border-2 rounded-md bg-slate-300 border-black p-2" type="submit"
                                 value="Search">
                             <input type="hidden" name="role" value="admin">
@@ -107,11 +107,18 @@
                             <h1 class="text-lg"><a href="mailto:{{ $teacher->email }}">{{ $teacher->email }}</a></h1>
                             <h1 class="text-lg"><a href="tel:{{ $teacher->contact }}">{{ $teacher->contact }}</a></h1>
                             <div class="flex flex-row gap-x-6">
-
                                 <a href="{{ route('edit-faculty', ['teacher_id' => $teacher->emp_id]) }}">
-                                    <div>
-                                        edit
-                                    </div>
+                                    <svg width="24" height="24" viewBox="0 0 24.00 24.00" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path d="M18 10L21 7L17 3L14 6M18 10L8 20H4V16L14 6M18 10L14 6"
+                                                stroke="#000000" stroke-width="1.008" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
                                 </a>
                                 <form action="{{ route('delete_faculty') }}" method="post"
                                     onsubmit="return confirmDelete()">
@@ -161,7 +168,7 @@
                 return confirm('Are you sure? This action cannot be undone.');
             }
 
-            setTimeout(function () {
+            setTimeout(function() {
                 document.getElementById('message').style.display = 'none';
             }, 5000);
 
@@ -172,7 +179,7 @@
                 document.getElementById('semesterSelect').value = semesterParam;
             }
 
-            document.getElementById('semesterSelect').addEventListener('change', function () {
+            document.getElementById('semesterSelect').addEventListener('change', function() {
                 document.getElementById('semesterForm').submit();
             });
         </script>
