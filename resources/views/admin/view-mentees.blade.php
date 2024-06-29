@@ -10,33 +10,32 @@
 <body class="font-poppy">
     <div class="">
         <nav class="w-full flex items-center justify-between py-4 shadow-md px-12">
-            <div class="-space-y-3">
+            <a class="space-x-2 flex justify-center items-center flex-row" href="{{ route('admin.dashboard') }}">
+                <svg width="28" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path fill="#000000" d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
+                        <path fill="#000000"
+                            d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z">
+                        </path>
+                    </g>
+                </svg>
                 <h1 class="text-2xl font-semibold">Mentor Dashboard</h1>
-            </div>
-            <div
+            </a>
+            {{-- <div
                 class="text-primary hover:bg-secondary border-2 hover:bg-primary/20 duration-200 cursor-pointer flex items-center justify-center rounded-full py-3 px-5 space-x-1">
-                {{-- <x-heroicon-o-user class="w-6 h-6" /> --}}
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
                     <g fill="none" stroke="currentColor" stroke-width="1.5">
                         <circle cx="12" cy="6" r="4" />
                         <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" />
                     </g>
                 </svg>
-                <span class="font-medium hidden lg:block">{{ $mentor_name }}</span>
-            </div>
+                <span class="font-medium hidden lg:block"></span>
+            </div> --}}
         </nav>
-        <div class="px-12 py-8">
-
-            <div class="grid lg:grid-cols-3 grid-rows-1 space-x-6">
-                <a href="{{ route('admin.dashboard') }}"
-                    class="cursor-pointer hover:bg-black/10 py-6 text-primary mb-2 bg-black/5 rounded-md flex items-center justify-center space-x-4">
-                    <h1 class="text-xl text-semibold">All Faculties</h1>
-                </a>
-            </div>
-
-            <h1 class="text-xl text-semibold">Mentees</h1>
-        </div>
-        <div class="px-12">
+        <div class="px-12 mt-8">
+            <h1 class="mb-4 text-2xl font-medium">{{ $mentor_name }}'s mentees</h1>
             <div class="grid grid-cols-6 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
                 <h1 class="text-lg font-medium">Student USN</h1>
                 <h1 class="text-lg font-medium">Student Name</h1>
@@ -82,7 +81,7 @@
         </div>
     </div>
     <script>
-        setTimeout(function () {
+        setTimeout(function() {
             document.getElementById('message').style.display = 'none';
         }, 5000);
 
@@ -93,7 +92,7 @@
             document.getElementById('semesterSelect').value = semesterParam;
         }
 
-        document.getElementById('semesterSelect').addEventListener('change', function () {
+        document.getElementById('semesterSelect').addEventListener('change', function() {
             document.getElementById('semesterForm').submit();
         });
     </script>
