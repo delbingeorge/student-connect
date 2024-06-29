@@ -16,7 +16,7 @@ class FacultyController extends Controller
 {
     public function addStudent(Request $request)
     {
-        if(!Session::has('user_id') || Session::get('role') == "student")
+        if (!Session::has('user_id') || Session::get('role') == "student")
             return redirect('/');
 
         $request->validate([
@@ -63,9 +63,9 @@ class FacultyController extends Controller
 
     public function deleteStudent(Request $request)
     {
-        if(!Session::has('user_id') || Session::get('role') == "student")
+        if (!Session::has('user_id') || Session::get('role') == "student")
             return redirect('/');
-        
+
         $request->validate([
             'student_id' => 'required',
         ]);
@@ -74,9 +74,9 @@ class FacultyController extends Controller
             $student = Student::where('student_id', $request->student_id)->first();
             $student->delete();
 
-            DB::select("DELETE FROM mentorshiP WHERE mentee_id = ? AND mentor_id = ?",[$request->student_id,session('user_id')]);
+            DB::select("DELETE FROM mentorshiP WHERE mentee_id = ? AND mentor_id = ?", [$request->student_id, session('user_id')]);
 
-            $user=User::where('user_id', $request->student_id)->first();
+            $user = User::where('user_id', $request->student_id)->first();
             $user->delete();
 
             return redirect()->route('teacher.dashboard')->with('success', 'Student removed successfully.');
@@ -88,9 +88,9 @@ class FacultyController extends Controller
 
     public function search(Request $request)
     {
-        if(!Session::has('user_id') || Session::get('role') == "student")
+        if (!Session::has('user_id') || Session::get('role') == "student")
             return redirect('/');
-        
+
         $semester = $request->query('semester');
         $id = $request->query('id');
         $role = $request->query('role');
@@ -101,7 +101,7 @@ class FacultyController extends Controller
                     $students = $students = DB::select("SELECT * FROM students WHERE student_id in (SELECT mentee_id from mentorship WHERE mentor_id = ?)", [session("user_id")]);
                     return redirect()->route('teacher.dashboard');
                 } else {
-                    $students = DB::select("SELECT * FROM students WHERE student_id in (SELECT mentee_id from mentorship WHERE mentor_id = ?) AND semester = ?", [session("user_id"),$semester]);
+                    $students = DB::select("SELECT * FROM students WHERE student_id in (SELECT mentee_id from mentorship WHERE mentor_id = ?) AND semester = ?", [session("user_id"), $semester]);
                     return view('teacher.dashboard', compact('students'));
                 }
             } elseif (isset($id)) {
@@ -122,7 +122,8 @@ class FacultyController extends Controller
         }
         if ($role == 'admin') {
             if (isset($id)) {
-                $teachers = Teacher::where('emp_id', $id)->get();
+                // $teachers = Teacher::where('emp_id', $id)->get();
+                $teachers = DB::select('SELECT * FROM teachers WHERE emp_id=?', [$id]);
                 return view('admin.dashboard', compact('teachers'));
             } else {
                 return redirect()->route('admin.dashboard');

@@ -128,7 +128,7 @@ Route::get('/edit-faculty/{teacher_id}', function ($teacher_id) {
     }
 })->name('edit-faculty');
 
-Route::get('/view-mentees/{teacher_id}&{teacher_name}', function ($teacher_id, $teacher_name) {
+Route::get('/admin/view-mentees/{teacher_id}&{teacher_name}', function ($teacher_id, $teacher_name) {
     if (Session::has('user_id') && Session::get('role') == "admin") {
         $students = DB::select("SELECT * FROM students WHERE student_id IN (SELECT mentee_id FROM mentorship WHERE mentor_id = ?)", [$teacher_id]);
         $mentor_name=$teacher_name;
@@ -221,7 +221,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 //***********************for searching mentees*****************************
-Route::get('/teacher/dashboard/search', [FacultyController::class, 'search'])->name('view-by-semester');
+Route::get('/admin/search_mentor', [FacultyController::class, 'search'])->name('view-by-semester');
 // Route::get('/teacher/dashboard/students', [FacultyController::class,'search'])->name('search-by-usn');
 
 

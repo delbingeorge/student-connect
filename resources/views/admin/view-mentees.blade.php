@@ -25,7 +25,7 @@
             </a>
             {{-- <div
                 class="text-primary hover:bg-secondary border-2 hover:bg-primary/20 duration-200 cursor-pointer flex items-center justify-center rounded-full py-3 px-5 space-x-1">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
                     <g fill="none" stroke="currentColor" stroke-width="1.5">
                         <circle cx="12" cy="6" r="4" />
                         <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" />
@@ -35,27 +35,33 @@
             </div> --}}
         </nav>
         <div class="px-12 mt-8">
-            <h1 class="mb-4 text-2xl font-medium">{{ $mentor_name }}'s mentees</h1>
-            <div class="grid grid-cols-6 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
-                <h1 class="text-lg font-medium">Student USN</h1>
-                <h1 class="text-lg font-medium">Student Name</h1>
-                <h1 class="text-lg font-medium">Semester</h1>
-                <h1 class="text-lg font-medium">Email</h1>
-                <h1 class="text-lg font-medium">Contact</h1>
-            </div>
-            @foreach ($students as $student)
-                <div class="grid grid-cols-6 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
-                    <h1 class="text-lg">{{ $student->student_id }}</h1>
-                    <h1 class="text-lg">{{ $student->fullname }}</h1>
-                    <h1 class="text-lg">{{ $student->semester }}</h1>
-                    <h1 class="text-lg"><a href="mailto:{{ $student->email }}">{{ $student->email }}</a></h1>
-                    <h1 class="text-lg"><a href="tel:{{ $student->contact }}">{{ $student->contact }}</a></h1>
-                    <a href="{{ route('download-pdf', ['usn' => $student->student_id]) }}"
-                        class="cursor-pointer hover:text-black text-primary mb-2 rounded-md flex items-center justify-center space-x-4">
-                        <h1 class="text-xl text-semibold">Download Details</h1>
-                    </a>
+            @if ($students != null)
+                <h1 class="mb-4 text-2xl font-medium">{{ $mentor_name }}'s mentees</h1>
+                <div class="grid grid-cols-6 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
+                    <h1 class="text-lg font-medium">Student USN</h1>
+                    <h1 class="text-lg font-medium">Student Name</h1>
+                    <h1 class="text-lg font-medium">Semester</h1>
+                    <h1 class="text-lg font-medium">Email</h1>
+                    <h1 class="text-lg font-medium">Contact</h1>
                 </div>
-            @endforeach
+                @foreach ($students as $student)
+                    <div class="grid grid-cols-6 gap-x-0 gap-y-0 py-4 px-3 border-b-2 border-black/10">
+                        <h1 class="text-lg">{{ $student->student_id }}</h1>
+                        <h1 class="text-lg">{{ $student->fullname }}</h1>
+                        <h1 class="text-lg">{{ $student->semester }}</h1>
+                        <h1 class="text-lg"><a href="mailto:{{ $student->email }}">{{ $student->email }}</a></h1>
+                        <h1 class="text-lg"><a href="tel:{{ $student->contact }}">{{ $student->contact }}</a></h1>
+                        <a href="{{ route('download-pdf', ['usn' => $student->student_id]) }}"
+                            class="cursor-pointer hover:text-black text-primary mb-2 rounded-md flex items-center justify-center space-x-4">
+                            <h1 class="text-xl text-semibold">Download Details</h1>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <div class="grid grid-cols-6 gap-x-0 gap-y-0 border-b-2 border-black/20 bg-secondary p-4">
+                    <h1 class="mb-4 text-2xl font-medium">No records</h1>
+                </div>
+            @endif
         </div>
         <div>
             @if (session('success'))
@@ -81,7 +87,7 @@
         </div>
     </div>
     <script>
-        setTimeout(function() {
+        setTimeout(function () {
             document.getElementById('message').style.display = 'none';
         }, 5000);
 
@@ -92,7 +98,7 @@
             document.getElementById('semesterSelect').value = semesterParam;
         }
 
-        document.getElementById('semesterSelect').addEventListener('change', function() {
+        document.getElementById('semesterSelect').addEventListener('change', function () {
             document.getElementById('semesterForm').submit();
         });
     </script>
