@@ -53,7 +53,7 @@
                     <div
                         class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
-                        <span class="text-xl">Next Semester</span>
+                        <span class="text-xl">Proceed</span>
                     </div>
                 </a>
             </div>
@@ -68,7 +68,7 @@
                     <div
                         class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
-                        <span class="text-xl">Activate Feedback Form</span>
+                        <span class="text-xl">Proceed</span>
                     </div>
                 </a>
             </div>
@@ -83,7 +83,7 @@
                     <div
                         class="flex items-center justify-center text-white rounded-md bg-primary hover:bg-primary/70 duration-300 py-2 px-12">
                         {{-- <x-feathericon-plus class="w-6 h-6" /> --}}
-                        <span class="text-xl">Activate MSE Form</span>
+                        <span class="text-xl">Proceed</span>
                     </div>
                 </a>
             </div>
