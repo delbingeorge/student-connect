@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
 
         //Admin/HOD
         DB::table("users")->insert([
-            "user_id" => "admin23mca",
+            "user_id" => "admin123",
             "email" => "admin@example.com",
             "password" => bcrypt("password"),
             "role" => "admin",
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             "fullname" => "Mamatha Balipa",
             "designation" => "Professor",
             "email" => "hod@example.com",
-            "contact" => "9087654326",
+            "contact" => "1234567890",
         ]);
     }
 }

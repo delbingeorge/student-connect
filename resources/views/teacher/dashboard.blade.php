@@ -134,7 +134,7 @@
                         <form action="{{ route('delete_student') }}" method="post" onsubmit="return confirmDelete()">
                             @csrf
                             <input type="hidden" name="student_id" value="{{ $student->student_id }}">
-                            <input class="hover:cursor-pointer" type="submit" value="delete">
+                            <input class="hover:cursor-pointer text-primary hover:text-black" type="submit" value="delete">
                         </form>
                     </div>
                 </div>

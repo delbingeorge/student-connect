@@ -8,27 +8,24 @@
 </head>
 
 <body class="font-poppy">
-    <a href="{{ route('student_dashboard') }}" class="flex items-end justify-start space-x-2 text-2xl font-medium">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z" />
-        </svg>
-        <span>Profile</span>
-    </a>
     <div class="relative px-0 lg:px-12">
         <nav class="w-full flex items-center justify-between px-4 lg:px-0 py-4">
             <div class="-space-y-3">
-                <h1
-                    class="flex items-center justify-center space-x-2 text-2xl font-medium">
-                    {{-- <x-heroicon-o-arrow-small-left class="w-7 h-7" /> --}}
-                    <span>
-                        Complete your profile!
-                    </span>
+                <h1 class="flex items-center justify-center space-x-2 text-2xl font-medium">
+                    <a href="{{ route('student_dashboard') }}"
+                        class="flex items-center justify-start space-x-2 text-2xl font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z" />
+                        </svg>
+                        <span>Back</span>
+                    </a>
                 </h1>
             </div>
         </nav>
     </div>
     <div class="flex items-center justify-center flex-col">
-        <form class="px-4 lg:px-12 space-y-8 py-8 bg-secondary w-3/4" action="{{ route('submit-feedback-form') }}" method="post">
+        <form class="px-4 lg:px-12 space-y-8 py-8 bg-secondary w-3/4" action="{{ route('submit-feedback-form') }}"
+            method="post">
             @csrf
             <h1 class="text-3xl font-semibold">Performance Feedback {{ session('pending_feedback_number') }}</h1>
             <div>
@@ -129,15 +126,14 @@
                                     <span class="text-xl font-medium">{{ $subject->subject_name }} :</span>
                                     <input type="text" name="{{ $subject->subject_code }}"
                                         class="border-[3px] text-xl font-semibold w-16 h-16 text-center rounded-xl"
-                                        placeholder="00"
-                                        id="{{ $subject->subject_code }}">
+                                        placeholder="00" id="{{ $subject->subject_code }}">
                                 </div>
                             @endforeach
                         @else
-                            @php
-                                header('Location: /student_dashboard');
-                                exit();
-                            @endphp
+                                                @php
+                                                    header('Location: /student_dashboard');
+                                                    exit();
+                                                @endphp
                         @endif
                     </div>
                     <div>
