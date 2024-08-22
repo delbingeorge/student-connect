@@ -34,6 +34,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="min-h-screen flex-col w-full lg:w-2/4 flex items-center justify-center">
             <form id="login-screen" class="flex items-center flex-col w-[95%] lg:w-full justify-center space-y-6"
                 method="post" action="{{ route('admin_login') }}">
