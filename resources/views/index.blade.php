@@ -91,7 +91,6 @@
                     class="text-[1.35rem] bg-primary w-[85%] lg:w-3/4 text-light py-3 px-24 rounded-lg hover:bg-primary/90 cursor-pointer duration-300 font-medium"
                     value="Login">
             </form>
-            
             <div>
                 @if (session('invalid_student_credential'))
                     <div id="error-message"
