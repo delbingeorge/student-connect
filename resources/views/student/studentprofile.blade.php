@@ -29,8 +29,8 @@
         <img src="images/background.png" alt="Cover Photo" class="w-full rounded-none lg:rounded-xl h-64 object-cover">
         <div class="mx-3 lg:mx-8 -mt-12 lg:-mt-20 relative z-10 flex items-end ">
             <div class=" overflow-hidden ">
-                <img {{-- src="https://images.unsplash.com/photo-1554780336-390462301acf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" --}}
-                    src="https://i.pinimg.com/originals/dd/2c/d9/dd2cd97e17455c5612de4ef815734ea8.jpg"
+                <img
+                    src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"
                     alt="Profile Picture" class="w-28 lg:w-40 h-28 lg:h-40 object-cover border-4 rounded-2xl">
             </div>
             <div class="flex items-end justify-between w-[60%] md:w-[90%]">
