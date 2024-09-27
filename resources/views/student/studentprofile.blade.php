@@ -41,6 +41,7 @@
                 <div class="hidden lg:flex flex-row space-x-2">
                     <a href="{{ route('edit-profile') }}"
                         class="text-primary hover:bg-secondary group border-2 hover:bg-primary/20 duration-200 cursor-pointer flex items-center justify-center rounded-full py-3 px-5 space-x-1">
+                        <p class="text-lg lg:text-sm text-gray-600">EDIT</p>
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:scale-[1.08] duration-300"
                             viewBox="0 0 24 24">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -51,6 +52,7 @@
                     </a>
                     <a href="{{ route('logout') }}"
                         class="text-primary hover:bg-secondary border-2 group hover:bg-primary/20 duration-200 cursor-pointer flex items-center justify-center rounded-full py-3 px-5 space-x-1">
+                        <p class="text-lg lg:text-sm text-gray-600">LOGOUT</p>
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:translate-x-1 duration-300"
                             viewBox="0 0 24 24">
                             <path fill="currentColor"
